@@ -357,6 +357,21 @@ Examples include:
 
 Sustainability is closely connected to efficient resource management: using only the capacity that is actually required.
 
+## 7.Describe cloud service types
+Infrastructure as a service (IaaS) is the most flexible category of cloud services. It provides the maximum amount of control for your cloud resource
+With IaaS, you're essentially renting the hardware in a cloud datacenter, but what you do with that hardware is up to you.
+Common scenarios where IaaS might make sense include:
+Lift-and-shift migration: You set up cloud resources similar to your on-premises datacenter, and then move your workloads to the IaaS infrastructure.
+Testing and development: You need to rapidly replicate established configurations for development and test environments. You can start up or shut down different environments rapidly with an IaaS structure while maintaining complete control.
+
+PaaS environment, the cloud provider maintains the physical infrastructure, physical security, and connection to the internet. They also maintain the operating systems, middleware, development tools, and analytics services that make up a cloud solution. In a PaaS scenario, you don't have to worry about the licensing or patching for operating systems and databases.
+
+Common scenarios where PaaS might make sense include:
+
+Development framework: PaaS provides a framework that developers can build upon to develop or customize cloud-based applications. Developers can create applications using built-in software components. Cloud features such as scalability, high availability, and multitenant capability are included, reducing the amount of coding that developers must do.
+Analytics or business intelligence: Tools provided as a service with PaaS allow teams to analyze and mine their data, find insights and patterns, and predict outcomes to improve planning and operational decisions.
+
+Software as a service (SaaS) is the most complete cloud service model from a product perspective. With SaaS, you're essentially renting or using a fully developed application. Email, financial software, messaging applications, and connectivity software
 ---
 
 # Key Takeaways
