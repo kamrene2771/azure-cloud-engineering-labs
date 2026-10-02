@@ -32,14 +32,14 @@ is controlled maintained by a third-party cloud provider.
 
 ###HYBRID
 
-computing environment that uses both public and private clouds in an inte-connected environment , this allows private cloud to apply temporary public cloude resources
-hybrid provides also extra layer of security.
+computing environment that uses both public and private clouds in an inte-connected environment, this allows private cloud to apply temporary public cloude resources
+It can help keep specific workloads/data private, but the architecture itself can also increase complexity and security responsibility
 
 ###MULTICLOUD
 
 using multiple public cloud providers maybe using differente features from different cloud providers
-AZURE Arc is a set of technologies that helps manage cloud enviroments (all cloud models) 
-Azure Vmware solution its a solution for migrating private datacenters to azure cloud environment
+AZURE Arc is a way to manage and govern resources across Azure, on-premises and other clouds from Azure 
+Azure Vmware solution is specifically for running VMware workloads on Azure infrastructure.
 
 ### Consumption-based model
 
