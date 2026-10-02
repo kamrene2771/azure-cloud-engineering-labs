@@ -5,7 +5,7 @@
 Cloud computing is delivering computing services over the internet,that means common it infrastructure as
 VMs,storage,databases,networks,IOT,Ai.
 and because internet is the support,cloud consumers are not limited by physical infrastructure like traditional datacenters are.
-for example if a customer is expecting high traffic season or they are launching a new product,they are not supposed to deploy infra monthsin advance instead expand their cloud computing capacity also the ability to scale down afterward.
+for example if a customer is expecting high traffic season or they are launching a new product,they are not supposed to deploy infra months in advance instead expand their cloud computing capacity also the ability to scale down afterward.
 cloud computing improves agility lines apending to demand.
  
 ## Shared Responsibility Model
