@@ -79,12 +79,21 @@ Horizontal Scaling: add additional virtual machines or containers.
 ### Reliability
 is the ability to recover from failures to function .
 the cloud has a Decentralized design which by nature supports a reliable and resilient infrastructure.
-With a decentralized design, the cloud enables you to have resources deployed in regions around the world. With this global scale, even if one region has a catastrophic event other regions are still up and running
+With a decentralized design the cloud enables you to have resources deployed in regions around the world. With this global scale, even if one region has a catastrophic event other regions are still up and running
 
 ### Predictability
 with cloud you predict both performance and cost so you move forward with confidence. 
 ### Security
-c
+cloud provides solutions the matches security needs for a customer to get full security control , IaaS provides physical resources and the customer is responsible for OS , installed software security
+but if a customer want patches and maintenance taken care of automatically go with PaaS or SaaS .
 ### Governance
+cloud services provide tools such as templates to ensure deployed resources meet technical standards and regulatory requirements
+cloud based auditing helps flag resources that are out of compliance ,also provides mitigation strategies
 ### Manageability
+cloud management benefits are auto-scale based on need, templates,health monitor,alerts
+tools too web partal,CLI,APIs,Powershell
 ### Sustainability
+Scaling resources down when demand decreases
+Turning off or deallocating resources that are not in use
+Choosing efficient services and configurations to reduce overprovisioning
+Using governance and monitoring to track usage trends and optimize deployments over time
