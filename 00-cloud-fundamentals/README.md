@@ -43,8 +43,13 @@ Azure Vmware solution its a solution for migrating private datacenters to azure 
 
 ### Consumption-based model
 
-### Scalability vs Elasticity
+cloud computing operates on consumption based model, you pay for ressources used .
+in traditional IT budgeting we have : capEX , opEX
+capitale expenditure is up-front spending on physical infra ex servers,network equipments.
+operational expenditure is the spending on services over time
 
-### Reliability
+cloud consumption based model offer benefits as no upfront costs ,no need to purchase underutilized capacity also add resources when demand increase, release when demand decreases.
 
-### What I learned
+### Elasticity
+its lining demands with resources so never in waste or shortfall
+overspend on infrastructure that sits idle. Underestimate, and your applications suffer degraded performance
