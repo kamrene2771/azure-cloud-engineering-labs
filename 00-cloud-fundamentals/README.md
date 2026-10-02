@@ -1,6 +1,6 @@
 # Lab 00 — Cloud Fundamentals
 
-> Microsoft Learn progress: **Describe cloud computing** ✅ | **Describe the benefits of using cloud services** ✅
+> Microsoft Learn progress: **Introduction to Cloud Infrastructure: Describe cloud concepts** 🏆 **Completed**
 
 This section documents the cloud fundamentals I am learning as part of my Azure cloud engineering roadmap.  
 The goal is not only to complete Microsoft Learn modules, but to explain the concepts in my own words and build a public record of my progress.
@@ -357,43 +357,85 @@ Examples include:
 
 Sustainability is closely connected to efficient resource management: using only the capacity that is actually required.
 
-## 7.Describe cloud service types
-Infrastructure as a service (IaaS) is the most flexible category of cloud services. It provides the maximum amount of control for your cloud resource
-With IaaS, you're essentially renting the hardware in a cloud datacenter, but what you do with that hardware is up to you.
-Common scenarios where IaaS might make sense include:
-Lift-and-shift migration: You set up cloud resources similar to your on-premises datacenter, and then move your workloads to the IaaS infrastructure.
-Testing and development: You need to rapidly replicate established configurations for development and test environments. You can start up or shut down different environments rapidly with an IaaS structure while maintaining complete control.
+---
 
-PaaS environment, the cloud provider maintains the physical infrastructure, physical security, and connection to the internet. They also maintain the operating systems, middleware, development tools, and analytics services that make up a cloud solution. In a PaaS scenario, you don't have to worry about the licensing or patching for operating systems and databases.
+# 7. Cloud Service Types
 
-Common scenarios where PaaS might make sense include:
+## Infrastructure as a Service (IaaS)
 
-Development framework: PaaS provides a framework that developers can build upon to develop or customize cloud-based applications. Developers can create applications using built-in software components. Cloud features such as scalability, high availability, and multitenant capability are included, reducing the amount of coding that developers must do.
-Analytics or business intelligence: Tools provided as a service with PaaS allow teams to analyze and mine their data, find insights and patterns, and predict outcomes to improve planning and operational decisions.
+IaaS is the most flexible cloud service model and gives the customer the greatest amount of control over the cloud environment.
 
-Software as a service (SaaS) is the most complete cloud service model from a product perspective. With SaaS, you're essentially renting or using a fully developed application. Email, financial software, messaging applications, and connectivity software
+With IaaS, the organization is effectively renting infrastructure from a cloud provider while remaining responsible for how that infrastructure is configured and used.
+
+Common use cases include:
+
+- **Lift-and-shift migration** — recreating infrastructure similar to an existing on-premises environment and moving workloads into the cloud.
+- **Development and testing** — creating temporary environments quickly and removing them when they are no longer needed.
+- **Custom infrastructure requirements** — workloads that require greater control over operating systems, networking, or installed software.
+
+## Platform as a Service (PaaS)
+
+With PaaS, the cloud provider manages the underlying infrastructure as well as much of the operating environment.
+
+This can include:
+
+- Physical infrastructure
+- Networking
+- Operating systems
+- Middleware
+- Runtime environments
+- Platform services
+
+The customer can focus more on applications and data rather than maintaining the underlying platform.
+
+Common use cases include:
+
+- **Application development** — developers can build applications on a managed platform without managing the underlying operating system.
+- **Analytics and business intelligence** — managed services can help process and analyze data without requiring teams to build the complete infrastructure themselves.
+
+## Software as a Service (SaaS)
+
+SaaS provides a complete application that is operated and maintained by the service provider.
+
+The customer consumes the application rather than building and maintaining the underlying infrastructure or platform.
+
+Common examples include:
+
+- Email platforms
+- Messaging applications
+- Financial software
+- Productivity and collaboration tools
+
+The customer still manages areas such as users, access, data, and how the application is configured and used.
+
 ---
 
 # Key Takeaways
 
-From these modules, my main takeaways are:
+From this learning path, my main takeaways are:
 
-1. Cloud computing changes infrastructure from something that must always be purchased in advance into resources that can be provisioned when needed.
+1. Cloud computing allows infrastructure to be provisioned when needed instead of always being purchased in advance.
 2. Moving to the cloud does not remove customer responsibility; responsibility changes depending on the service model.
 3. IaaS provides the most control but requires more management, while PaaS and SaaS move more responsibility to the provider.
 4. Scalability and elasticity allow infrastructure capacity to follow workload demand.
 5. High availability and reliability depend on architecture, not simply on using a cloud provider.
 6. Cloud cost is strongly connected to resource usage, so monitoring and cleanup are important engineering responsibilities.
 7. Security, governance, and manageability remain essential even when infrastructure is hosted in the cloud.
+8. Choosing between IaaS, PaaS, and SaaS depends on how much control and management responsibility the organization needs.
 
 ---
 
 # Learning Evidence
 
-Completed Microsoft Learn modules:
+Microsoft Learn learning path completed:
 
 - ✅ **Describe cloud computing**
 - ✅ **Describe the benefits of using cloud services**
+- ✅ **Describe cloud service types**
+- 🏆 **Introduction to Cloud Infrastructure: Describe cloud concepts — Trophy earned**
+
+**Achievement:**  
+https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/8VCAPLHW?sharingId=E81E8C29E6F06D32
 
 This repository will continue to document my Azure learning path through theory, hands-on labs, architecture diagrams, automation, troubleshooting, and Infrastructure as Code.
 
@@ -401,4 +443,14 @@ This repository will continue to document my Azure learning path through theory,
 
 ## Next Step
 
-Continue the Azure Fundamentals learning path and document the next completed module before moving into hands-on Azure infrastructure labs.
+Before moving to the next Azure learning path, I will validate my understanding through a short technical review covering:
+
+- Shared responsibility
+- Cloud deployment models
+- Consumption-based pricing
+- CapEx vs OpEx
+- Scalability vs elasticity
+- High availability and reliability
+- IaaS vs PaaS vs SaaS
+
+After that checkpoint, the next phase will focus on **Azure architecture and services** and then hands-on infrastructure labs.
