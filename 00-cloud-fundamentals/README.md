@@ -72,9 +72,19 @@ each azure service has its own SLA.
 
 ### Scalability
 
+is adjusting resources to match demand , if suddenly you experience peak traffic the ability to scale means adding more ressources.
+Vertical Scaling: add more CPUs or RAM to the virtual machine.
+Horizontal Scaling: add additional virtual machines or containers.
+
 ### Reliability
+is the ability to recover from failures to function .
+the cloud has a Decentralized design which by nature supports a reliable and resilient infrastructure.
+With a decentralized design, the cloud enables you to have resources deployed in regions around the world. With this global scale, even if one region has a catastrophic event other regions are still up and running
+
 ### Predictability
+with cloud you predict both performance and cost so you move forward with confidence. 
 ### Security
+c
 ### Governance
 ### Manageability
 ### Sustainability
