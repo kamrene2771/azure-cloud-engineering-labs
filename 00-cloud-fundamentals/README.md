@@ -24,11 +24,14 @@ saas software as a service the provider is responsible for the application so th
 ####PRIVATE
 a private cloud is the natural development of traditional datacenters its deployed and managed by single entity. data will no be collocated with other tenants .
 great cost and fewer of the benefits of public cloud.
+
 ####PUBLIC
-is controlled maintained by a third-party cloud provider
+is controlled maintained by a third-party cloud provider.
+
 ####HYBRID
 computing environment that uses both public and private clouds in an inte-connected environment , this allows private cloud to apply temporary public cloude resources
 hybrid provides also extra layer of security.
+
 ####MULTICLOUD
 using multiple public cloud providers maybe using differente features from different cloud providers
 AZURE Arc is a set of technologies that helps manage cloud enviroments (all cloud models) 
