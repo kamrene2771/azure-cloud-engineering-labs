@@ -1,5 +1,7 @@
 ## Lab 00 — Cloud Fundamentals
 
+## 1. Cloud Computing
+
 ### What is cloud computing?
 
 Cloud computing is delivering computing services over the internet,that means common it infrastructure as VMs,storage,databases,networks,IOT,Ai.
@@ -51,5 +53,28 @@ operational expenditure is the spending on services over time
 cloud consumption based model offer benefits as no upfront costs ,no need to purchase underutilized capacity also add resources when demand increase, release when demand decreases.
 
 ### Elasticity
-its lining demands with resources so never in waste or shortfall
-overspend on infrastructure that sits idle. Underestimate, and your applications suffer degraded performance
+its lining demands with resources so never in waste or shortfall:
+overspend on infrastructure that sits idle. 
+Underestimate, and your applications suffer degraded performance.
+
+## 2. Benefits of Cloud Services
+
+### High Availability
+
+when deploying a cloud application should considerate availability and scale. 
+Azure is a highly available cloud environment with uptime guarantees depending on the service .these guarantees are part of SLAs
+azure SLAs is the agreement between the provider and the customer
+therefore its represented by a percentage % a high service availability can be 99% to 100% available.
+in reality 100% available service is very expensive and difficult to achieve cause it allows no time for required maintenance or upgrades .
+a 99% service can be down up to 7.2hrs a month.
+a 99.9% service can be down up to 43.2 min a month
+each azure service has its own SLA.
+
+### Scalability
+
+### Reliability
+### Predictability
+### Security
+### Governance
+### Manageability
+### Sustainability
