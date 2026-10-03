@@ -41,11 +41,33 @@ DEVOPS + MANAGEMENT
 IOT
 ANALYTICS
 INTEGRATION
+
 2.Physical infrastructure
+
 azure infrastructure starts with datacenters. these datacenters are facilities with servers arranged in racks,with dedicated power, cooling and networking only its a much larger scale.
+
 3.Regions
+
 a region is a geographical area on the planet that contains at least one or multiple datacenters that are nearby and betworked together with a low-latency network.
 
+4.availability zones
+
+availability zones are physically separate datacenters within an Azure region. Each availability zone is made up of one or more datacenters equipped with independent power, cooling, and networking. An availability zone is set up to be an isolation boundary. If one zone goes down, the other continues working.
+However, not all Azure Regions currently support availability zones.
+
+Azure services that support availability zones fall into three categories:
+
+Zonal services: You pin the resource to a specific zone (for example, VMs, managed disks, IP addresses).
+Zone-redundant services: The platform replicates automatically across zones (for example, zone-redundant storage, SQL Database).
+Non-regional services: Services are always available from Azure geographies and are resilient to zone-wide outages as well as region-wide outages.
+
+Region pairs
+Most Azure regions are paired with another region within the same geography (such as US, Europe, or Asia) at least 300 miles away. This approach allows for the replication of resources across a geography that helps reduce the likelihood of interruptions because of events such as natural disasters, civil unrest, power outages, or physical network outages that affect an entire region.
+
+Sovereign Regions
+In addition to regular regions, Azure also has sovereign regions. Sovereign regions are instances of Azure that are isolated from the main instance of Azure. You may need to use a sovereign region for compliance or legal purposes.
+
+3.Azure management infrastructure
 
 
 ## Learning Notes
