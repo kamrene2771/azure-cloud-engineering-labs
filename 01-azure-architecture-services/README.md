@@ -41,6 +41,12 @@ DEVOPS + MANAGEMENT
 IOT
 ANALYTICS
 INTEGRATION
+2.Physical infrastructure
+azure infrastructure starts with datacenters. these datacenters are facilities with servers arranged in racks,with dedicated power, cooling and networking only its a much larger scale.
+3.Regions
+a region is a geographical area on the planet that contains at least one or multiple datacenters that are nearby and betworked together with a low-latency network.
+
+
 
 ## Learning Notes
 
