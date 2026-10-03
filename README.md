@@ -8,12 +8,13 @@ This repository documents my progression from Azure fundamentals to practical cl
 
 **Azure Architecture & Services** 🔄
 
-I have completed the Microsoft Learn learning path:
+### Microsoft Learn Progress
 
-- 🏆 **Introduction to Cloud Infrastructure: Describe cloud concepts**
+- 🏆 **Introduction to Cloud Infrastructure: Describe cloud concepts**  
+  https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/8VCAPLHW?sharingId=E81E8C29E6F06D32
 
-Achievement:  
-https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/8VCAPLHW?sharingId=E81E8C29E6F06D32
+- ✅ **Describe the core architectural components of Azure**  
+  https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/VSRTPTQM?sharingId=E81E8C29E6F06D32
 
 ## Learning Roadmap
 
