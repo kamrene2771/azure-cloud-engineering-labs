@@ -19,6 +19,9 @@ This repository documents my progression from Azure fundamentals to practical cl
 - ✅ **Describe Azure compute services**  
   https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/3ZG7A2ZH?sharingId=E81E8C29E6F06D32
 
+- ✅ **Describe Azure networking services**  
+  https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/H262SW48?sharingId=E81E8C29E6F06D32
+
 ## Learning Roadmap
 
 | Stage | Topic | Status |
