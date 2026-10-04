@@ -454,139 +454,263 @@ It can host:
 
 It supports Windows and Linux and can integrate with source-control systems for automated deployment.
 
-##18.Azure virtual networking(important)
+---
 
-azure virtual networks and virual subnets enables resources such as VMS,azure apps,databases(containers) to communicate with each other , with users over internet,and with on-premises client computers
+# Azure Networking Services
 
-azure vnet provides:
+## 18. Azure Virtual Networks
 
-##Isolation and segmentation
+Azure Virtual Network (VNet) provides private networking for Azure resources.
 
-Azure Virtual Network lets you create multiple isolated virtual networks. When you set up a virtual network, you define a private IP address space by using either public or private IP address ranges. The IP range only exists within the virtual network and isn't internet routable. You can divide that IP address space into subnets and allocate part of the defined address space to each named subnet.
+A VNet can connect resources such as:
 
-For name resolution, you can use the name resolution service built into Azure. You also can configure the virtual network to use either an internal or an external DNS server.
+- Virtual machines
+- Azure Kubernetes Service
+- Virtual machine scale sets
+- Application environments
+- Other supported Azure services
 
-##Internet communications
+A VNet can also communicate with users over the internet and with on-premises networks.
 
-You can enable incoming connections from the internet by assigning a public IP address to an Azure resource, or putting the resource behind a public load balancer.
+### Isolation and segmentation
 
-##Communicate between Azure resources
+A VNet has its own IP address space.
 
-Azure resources can communicate securely with each other in one of two ways:
+That address space can be divided into subnets so that workloads can be separated logically.
 
-Virtual networks can connect not only VMs but other Azure resources, such as the App Service Environment for Power Apps, Azure Kubernetes Service, and Azure virtual machine scale sets.
-Service endpoints can connect to other Azure resource types, such as Azure SQL databases and storage accounts. This approach lets you link multiple Azure resources to virtual networks to improve security and provide optimal routing between resources.
+This makes it possible to organize resources by role, security requirement, or application tier.
 
-##Communicate with on-premises resources
+For name resolution, Azure provides built-in DNS capabilities, and a VNet can also be configured to use custom DNS servers.
 
-Azure virtual networks let you link resources together in your on-premises environment and within your Azure subscription. In effect, you can create a network that spans both your local and cloud environments. There are three ways to achieve this connectivity:
+### Internet communication
 
-Point-to-site virtual private network connections are from a computer outside your environment back into your private network. In this case, the client computer initiates an encrypted VPN connection to connect to the Azure virtual network.
-Site-to-site virtual private networks link your on-premises VPN device or gateway to the Azure VPN gateway in a virtual network. In effect, the devices in Azure can appear as being on the local network. The connection is encrypted and works over the internet.
-Azure ExpressRoute provides a dedicated private connectivity to Azure that doesn't travel over the internet. ExpressRoute is useful for environments where you need greater bandwidth and even higher levels of security.
+Azure resources can communicate with the internet when public connectivity is configured.
 
-##Route network traffic
+Examples include:
 
-By default, Azure routes traffic between subnets on any connected virtual networks, on-premises networks, and the internet. You also can control routing and override those settings, as follows:
+- Assigning a public IP address to a resource
+- Placing resources behind a public load balancer
 
-Route tables let you define rules about how traffic should be directed. You can create custom route tables that control how packets are routed between subnets.
-Border Gateway Protocol (BGP) works with Azure VPN gateways, Azure Route Server, or Azure ExpressRoute to propagate on-premises BGP routes to Azure virtual networks.
-User-defined routes (UDR) let you control the routing tables between subnets within a virtual network or between virtual networks, giving you greater control over network traffic flow.
+Public connectivity should be designed together with appropriate security controls.
 
-##Filter network traffic
+### Communication between Azure resources
 
-Network security groups are Azure resources that can contain multiple inbound and outbound security rules. You can define these rules to allow or block traffic, based on factors such as source and destination IP address, port, and protocol.
-Network virtual appliances are specialized VMs that can be compared to a hardened network appliance. A network virtual appliance carries out a particular network function, such as running a firewall or performing wide area network (WAN) optimization.
+Azure resources can communicate privately inside Azure.
 
-Connect virtual networks
+Two important approaches covered in this module are:
 
-You can link virtual networks together by using virtual network peering. Peering allows two virtual networks to connect directly to each other. Network traffic between peered networks is private, and travels on the Microsoft backbone network, never entering the public internet. Peering enables resources in each virtual network to communicate with each other. These virtual networks can be in separate regions, which lets you create a global interconnected network through Azure.
+- **Virtual network connectivity** — resources communicate through a VNet.
+- **Service endpoints** — selected Azure services such as Azure Storage or Azure SQL can be reached from a VNet using controlled network access.
 
-##19.Azure virtual private networks
+### Communication with on-premises resources
 
-A virtual private network (VPN) uses an encrypted tunnel within another network. VPNs are typically deployed to connect two or more trusted private networks to one another over an untrusted network (typically the public internet). Traffic is encrypted while traveling over the untrusted network to prevent eavesdropping or other attacks. VPNs can enable networks to safely and securely share sensitive information.
+Azure VNets can connect to on-premises environments.
 
-Connect on-premises datacenters to virtual networks through a site-to-site connection.
-Connect individual devices to virtual networks through a point-to-site connection.
-Connect virtual networks to other virtual networks through a network-to-network connection.
+Common options include:
 
-All data transfer is encrypted inside a private tunnel as it crosses the internet. You can deploy only one VPN gateway in each virtual network. However, you can use one gateway to connect to multiple locations, which includes other virtual networks or on-premises datacenters.
-
-Policy-based VPN gateways specify statically the IP address of packets that should be encrypted through each tunnel. This type of device evaluates every data packet against those sets of IP addresses to choose the tunnel through which that packet is sent.
-
-In route-based gateways, IPSec tunnels are modeled as a network interface or virtual tunnel interface. IP routing (either static routes or dynamic routing protocols) decides which one of these tunnel interfaces to use when sending each packet. Route-based VPNs are the preferred connection method for on-premises devices. They're more resilient to topology changes such as the creation of new subnets.
-
-Use a route-based VPN gateway if you need any of the following types of connectivity:
-
-Connections between virtual networks
-Point-to-site connections
-Multisite connections
-Coexistence with an Azure ExpressRoute gateway
-
-By default, VPN gateways are deployed as two instances in an active/standby configuration, even if you only see one VPN gateway resource in Azure. When planned maintenance or unplanned disruption affects the active instance, the standby instance automatically assumes responsibility for connections without any user intervention. Connections are interrupted during this failover, but they're typically restored within a few seconds for planned maintenance and within 90 seconds for unplanned disruptions.
-
-With the introduction of support for the BGP routing protocol, you can also deploy VPN gateways in an active/active configuration. In this configuration, you assign a unique public IP address to each instance. You then create separate tunnels from the on-premises device to each IP address. You can extend the high availability by deploying an additional VPN device on-premises.
-
-ExpressRoute failover
-
-Another high-availability option is to configure a VPN gateway as a secure failover path for ExpressRoute connections. ExpressRoute circuits have resiliency built in. However, they aren't immune to physical problems that affect the cables delivering connectivity or outages that affect the complete ExpressRoute location. In high-availability scenarios, where there's risk associated with an outage of an ExpressRoute circuit, you can also provision a VPN gateway that uses the internet as an alternative method of connectivity. In this way, you can ensure there's always a connection to the virtual networks.
-
-Zone-redundant gateways
-
-In regions that support availability zones, VPN gateways and ExpressRoute gateways can be deployed in a zone-redundant configuration. This configuration brings resiliency, scalability, and higher availability to virtual network gateways. Deploying gateways in Azure availability zones physically and logically separates gateways within a region while protecting your on-premises network connectivity to Azure from zone-level failures. These gateways require different gateway stock keeping units (SKUs) and use Standard public IP addresses instead of Basic public IP addresses.
-
-Azure ExpressRoute lets you extend your on-premises networks into the Microsoft cloud over a private connection, with the help of a connectivity provider. This connection is called an ExpressRoute Circuit. With ExpressRoute, you can establish connections to Microsoft cloud services,
-ExpressRoute lets you connect offices, datacenters, or other facilities to the Microsoft cloud. Each location would have its own ExpressRoute circuit.
-
-Connectivity can be from an any-to-any (IP VPN) network, a point-to-point Ethernet network, or a virtual cross-connection through a connectivity provider at a colocation facility. ExpressRoute connections don't go over the public internet. Because they bypass the public internet, ExpressRoute connections offer more reliability, faster speeds, consistent latencies, and higher security than typical internet connections.
-
-Global connectivity
-
-You can enable ExpressRoute Global Reach to exchange data across your on-premises sites by connecting your ExpressRoute circuits. For example, suppose you have an office in Asia and a datacenter in Europe, both with ExpressRoute circuits connecting them to the Microsoft network. You can use ExpressRoute Global Reach to connect those two facilities, allowing them to communicate without transferring data over the public internet.
-
-At a high level, choose ExpressRoute when:
-
-You need private, consistent connectivity between on-premises networks and Azure.
-Your team has strict compliance or data-transfer requirements.
-You need predictable latency and high-throughput network performance.
-You want to avoid sending critical traffic over the public internet.
-
+- **Point-to-site VPN** — an individual client device creates an encrypted VPN connection to Azure.
+- **Site-to-site VPN** — an on-premises VPN device connects to an Azure VPN Gateway over an encrypted tunnel.
+- **ExpressRoute** — provides private connectivity to Microsoft cloud services without sending traffic over the public internet.
 
 ---
 
-# Key Takeaways
+## 19. Routing and Traffic Control
 
-From the architecture and compute modules, my main takeaways are:
+Azure automatically provides routing between connected network components, but routing can also be controlled explicitly.
 
-1. Azure's physical infrastructure is organized into datacenters, regions, and availability zones.
-2. Availability zones provide physical separation inside a region and can improve resiliency when workloads are designed to use them.
-3. Region pairs provide geographic separation that can support disaster-recovery strategies.
-4. Azure resources are organized inside resource groups.
-5. Subscriptions provide billing and access-control boundaries.
-6. Management groups provide a governance layer above subscriptions.
-7. Virtual machines provide the most control but require the customer to manage more of the operating environment.
-8. Containers are lighter than VMs and are useful for portable, scalable workloads.
-9. AKS provides orchestration for larger containerized environments.
-10. Azure Functions is useful for event-driven serverless workloads.
-11. Azure App Service provides managed application hosting without requiring direct infrastructure management.
-12. Choosing the right compute service depends on how much control, management responsibility, scalability, and portability the workload requires.
+### Route tables and User-Defined Routes
 
-##20.Azure DNS
+Route tables can contain custom routes that control how traffic is forwarded.
 
-Azure DNS is a hosting service for DNS domains that provides name resolution by using Microsoft Azure infrastructure. By hosting your domains in Azure, you can manage your DNS records using the same credentials, APIs, tools, and billing as your other Azure services.
+**User-Defined Routes (UDRs)** can be used to control traffic flow:
 
-Benefits of Azure DNS
-Azure DNS uses the scope and scale of Microsoft Azure to provide numerous benefits, including:
+- Between subnets
+- Between VNets
+- Toward network virtual appliances
+- Toward on-premises environments
 
-Reliability and performance
-Security
-Ease of use
-Customizable virtual networks
-Alias records
+### Border Gateway Protocol
 
-Alias records
+BGP can be used with:
 
-Azure DNS also supports alias record sets. You can use an alias record set to refer to an Azure resource, such as an Azure public IP address, an Azure Traffic Manager profile, or an Azure Content Delivery Network (CDN) endpoint. If the IP address of the underlying resource changes, the alias record set seamlessly updates itself during DNS resolution. The alias record set points to the service instance, and the service instance is associated with an IP address.
+- Azure VPN Gateway
+- Azure Route Server
+- Azure ExpressRoute
+
+BGP allows routes to be exchanged dynamically between Azure and external networks.
+
+This is particularly relevant in hybrid networking scenarios.
+
+---
+
+## 20. Filtering Network Traffic
+
+### Network Security Groups
+
+Network Security Groups (NSGs) contain inbound and outbound rules that allow or deny traffic.
+
+Rules can be based on:
+
+- Source IP address
+- Destination IP address
+- Port
+- Protocol
+- Direction
+
+NSGs are one of the primary tools for controlling traffic at the subnet or network-interface level.
+
+### Network Virtual Appliances
+
+A Network Virtual Appliance (NVA) is a specialized virtual machine that performs a network function.
+
+Examples include:
+
+- Firewalling
+- Routing
+- WAN optimization
+
+NVAs can be inserted into a traffic path when more specialized network processing is required.
+
+---
+
+## 21. Virtual Network Peering
+
+Virtual network peering connects two VNets directly.
+
+Traffic between peered VNets:
+
+- Remains private
+- Travels over the Microsoft backbone network
+- Does not need to pass through the public internet
+
+Peering enables resources in separate VNets to communicate with one another.
+
+VNets can also be peered across Azure regions, allowing globally distributed private networks to be built.
+
+---
+
+## 22. Azure VPN Gateway
+
+A VPN creates an encrypted tunnel across an untrusted network such as the public internet.
+
+Azure VPN Gateway can support several connectivity models:
+
+- **Site-to-site** — connects an on-premises network to an Azure VNet.
+- **Point-to-site** — connects an individual device to an Azure VNet.
+- **VNet-to-VNet** — connects one VNet to another using VPN gateways.
+
+### Policy-based vs route-based VPN
+
+**Policy-based VPN gateways** use defined traffic selectors to determine which traffic should enter a tunnel.
+
+**Route-based VPN gateways** model tunnels as interfaces and use routing information to decide where packets should be sent.
+
+Route-based VPNs are generally more flexible for scenarios such as:
+
+- VNet-to-VNet connectivity
+- Point-to-site connectivity
+- Multisite connectivity
+- Coexistence with ExpressRoute
+- Dynamic routing with BGP
+
+### VPN Gateway resiliency
+
+VPN gateways are deployed with built-in redundancy.
+
+In the standard active/standby design, one gateway instance can take over if the active instance is affected by maintenance or failure.
+
+Azure also supports active/active VPN gateway configurations using multiple public IP addresses and separate tunnels.
+
+For additional resilience, an organization can also deploy redundant on-premises VPN devices.
+
+### Zone-redundant gateways
+
+In regions that support availability zones, VPN Gateway and ExpressRoute gateways can use zone-redundant configurations.
+
+This can improve resilience against zone-level failures.
+
+---
+
+## 23. Azure ExpressRoute
+
+Azure ExpressRoute provides private connectivity between on-premises networks and Microsoft cloud services through a connectivity provider.
+
+Unlike a normal VPN, ExpressRoute traffic does not travel over the public internet.
+
+Typical reasons to use ExpressRoute include:
+
+- Private connectivity requirements
+- Predictable latency
+- High-throughput connectivity
+- Compliance requirements
+- More consistent network performance
+
+An ExpressRoute connection is delivered through an **ExpressRoute circuit**.
+
+Connectivity options can include:
+
+- Any-to-any IP VPN networks
+- Point-to-point Ethernet
+- Virtual cross-connections at colocation facilities
+
+### ExpressRoute Global Reach
+
+ExpressRoute Global Reach can connect separate on-premises locations through Microsoft’s network.
+
+For example, an office and a datacenter in different geographic regions can communicate through their ExpressRoute circuits without sending that traffic over the public internet.
+
+### ExpressRoute with VPN failover
+
+A VPN Gateway can be used as a backup path for an ExpressRoute connection.
+
+This provides an additional connectivity option if an ExpressRoute circuit experiences an outage.
+
+---
+
+## 24. Azure DNS
+
+Azure DNS is a DNS hosting service that uses Microsoft Azure infrastructure.
+
+It allows DNS zones and records to be managed using Azure tools, APIs, authentication, and billing.
+
+Benefits covered in this module include:
+
+- Reliability
+- Performance
+- Security
+- Ease of management
+- Integration with Azure environments
+- Alias records
+
+### Alias records
+
+Alias record sets can point directly to supported Azure resources.
+
+Examples include:
+
+- Azure public IP addresses
+- Azure Traffic Manager profiles
+- Azure CDN endpoints
+
+If the underlying resource changes, the alias can continue to resolve to the service without requiring the DNS record to be manually updated with a new IP address.
+
+---
+
+# Networking Key Takeaways
+
+From the Azure networking module, my main takeaways are:
+
+1. A VNet is the main private networking boundary for Azure resources.
+2. Subnets provide segmentation inside a VNet.
+3. NSGs control inbound and outbound traffic using security rules.
+4. Route tables and UDRs provide explicit control over packet forwarding.
+5. BGP supports dynamic route exchange in hybrid Azure networking scenarios.
+6. VNet peering provides private communication between Azure virtual networks.
+7. VPN Gateway provides encrypted connectivity over the public internet.
+8. ExpressRoute provides private connectivity that does not traverse the public internet.
+9. Zone-redundant gateways can improve resilience for hybrid connectivity.
+10. Azure DNS provides integrated DNS hosting and supports alias records for Azure resources.
+
 ---
 
 # Learning Evidence
@@ -595,6 +719,7 @@ Completed Microsoft Learn modules:
 
 - ✅ **Describe the core architectural components of Azure**
 - ✅ **Describe Azure compute services**
+- ✅ **Describe Azure networking services**
 
 Core architecture achievement:  
 https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/VSRTPTQM?sharingId=E81E8C29E6F06D32
@@ -602,10 +727,22 @@ https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/VSRTP
 Compute services achievement:  
 https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/3ZG7A2ZH?sharingId=E81E8C29E6F06D32
 
+Networking services achievement:  
+https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/H262SW48?sharingId=E81E8C29E6F06D32
+
 ---
 
 ## Next Step
 
-Continue with **Describe Azure networking services**.
+Start the first hands-on Azure networking lab.
 
-This is a high-priority module for my target path in **Cloud Infrastructure, Network Engineering, and NetDevOps**, and it will lead directly into the first hands-on Azure networking labs.
+The first practical lab will focus on:
+
+- Resource group
+- Virtual network
+- Subnets
+- Network Security Groups
+- Linux virtual machine
+- Connectivity validation
+- Intentional connectivity failure
+- Troubleshooting and documentation
