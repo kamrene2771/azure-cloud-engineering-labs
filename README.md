@@ -16,7 +16,8 @@ This repository documents my progression from Azure fundamentals to practical cl
 - ✅ **Describe the core architectural components of Azure**  
   https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/VSRTPTQM?sharingId=E81E8C29E6F06D32
 
-- ✅ **Describe Azure compute services**
+- ✅ **Describe Azure compute services**  
+  https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/3ZG7A2ZH?sharingId=E81E8C29E6F06D32
 
 ## Learning Roadmap
 
