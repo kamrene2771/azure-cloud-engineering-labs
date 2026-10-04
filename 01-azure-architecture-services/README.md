@@ -8,6 +8,9 @@
 Core architecture achievement:  
 https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/VSRTPTQM?sharingId=E81E8C29E6F06D32
 
+Compute services achievement:  
+https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/3ZG7A2ZH?sharingId=E81E8C29E6F06D32
+
 This section documents my understanding of Azure architecture and core services as I progress through Microsoft Learn.
 
 ---
@@ -481,6 +484,9 @@ Completed Microsoft Learn modules:
 
 Core architecture achievement:  
 https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/VSRTPTQM?sharingId=E81E8C29E6F06D32
+
+Compute services achievement:  
+https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/3ZG7A2ZH?sharingId=E81E8C29E6F06D32
 
 ---
 
