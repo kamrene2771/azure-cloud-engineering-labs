@@ -1,9 +1,11 @@
 # 01 — Azure Architecture & Services
 
 > Status: 🔄 **In progress**  
-> Microsoft Learn badge earned: **Describe the core architectural components of Azure** ✅
+> Microsoft Learn modules completed:
+> - ✅ **Describe the core architectural components of Azure**
+> - ✅ **Describe Azure compute services**
 
-Achievement:  
+Core architecture achievement:  
 https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/VSRTPTQM?sharingId=E81E8C29E6F06D32
 
 This section documents my understanding of Azure architecture and core services as I progress through Microsoft Learn.
@@ -202,152 +204,258 @@ Resource Group
     ↓
 Resource
 ```
+
 This hierarchy allows organizations to apply governance consistently across large Azure environments.
 
-11 .Azure virtual machines
-
-With Azure Virtual Machines (VMs), you can run virtualized servers in Azure as infrastructure as a service (IaaS). Like a physical server, you control the operating system and installed software. VMs are a good fit when you need:
-
-Total control over the operating system (OS).
-The ability to run custom software.
-To use custom hosting configurations.
-
-Common VM use cases include:
-
-Testing and development. Create different OS and app configurations quickly, then remove the VM when testing is complete.
-Cloud application hosting. Run applications in Azure and scale capacity up or down as demand changes.
-Datacenter extension. Extend an on-premises network into Azure and host workloads in a connected virtual network.
-Disaster recovery. Keep failover capacity in Azure and run critical workloads there if your primary site is unavailable.
-Lift and shift migration. Move existing server workloads with minimal application redesign.
-
-VM resources and sizing
-When you provision a VM, you choose resources such as:
-
-Size (purpose, number of processor cores, and amount of RAM)
-Storage disks (hard disk drives, solid state drives, etc.)
-Networking (virtual network, public IP address, and port configuration)
-Understand VM size families and names
-Azure VM sizes are grouped into families so you can quickly choose a size based on your workload needs.
-
-Family	Typical focus	Example use
-B-series	Burstable, cost-efficient	Dev/test workloads with occasional CPU spikes
-D-series	General purpose	Web servers, small-to-medium app servers
-E-series	Memory optimized	In-memory databases, analytics workloads
-F-series	Compute optimized	CPU-intensive application tiers
-M-series	Large memory footprint	Large enterprise databases
-L-series	Storage optimized	High-throughput storage and data processing
-N-series	GPU enabled	AI training/inference and graphics workloads
-
-each VM also has options that you can customize based on your needs. You can adjust the number of virtual CPUs (vCPUs), the amount of RAM, and the storage disk configuration.
-vCPU count: affects compute capacity for concurrent and CPU-bound workloads.
-RAM: affects how much working data the VM can keep in memory.
-Disk configuration: affects storage capacity, IOPS, and throughput.
-Network throughput: affects data transfer performance in and out of the VM.
-Premium SSD support: indicates whether the size supports premium managed disks.
-Hardware generation: indicates platform generation and can affect baseline performance.
-
-Scale and resiliency options for VMs
-You can run single VMs for testing, development, or minor tasks. Or you can group VMs together to provide high availability, scalability, and redundancy. Azure can manage these groupings with features such as scale sets and availability sets.
-
-Virtual machine scale sets
-Virtual machine scale sets let you create and manage groups of identical, load-balanced VMs. Without scale sets, you must manually keep VM configuration consistent, monitor utilization, and adjust instance counts. Scale sets centralize configuration and can automatically scale out or in based on demand or schedules. They also integrate with load balancing so traffic is distributed efficiently.
-
-Virtual machine availability sets improve VM resiliency inside a region. They reduce the chance that all VMs are affected by one maintenance event or hardware failure.
-
-Availability sets group VMs by:
-
-Update domain: VMs that can be rebooted together during planned maintenance.
-Fault domain: VMs that share a potential power or network failure point.
-
-12.Azure virtual desktop
 ---
-Azure Virtual Desktop is a desktop and application virtualization service in Azure. It lets users securely access Windows desktops and apps from many device types and locations.
 
-At a fundamentals level, Azure Virtual Desktop is a managed option for remote desktop access where desktops and apps stay in the cloud instead of on local devices
+# Azure Compute Services
 
-When to use Azure Virtual Desktop
-Use Azure Virtual Desktop when a team needs centralized desktop and app access across distributed users, contractors, or hybrid workers. For example, a support team can use standardized cloud-hosted desktops so each shift has the same tools, access policies, and security controls.
+## 11. Azure Virtual Machines
 
-13.Azure containers
+Azure Virtual Machines provide virtualized servers as an **Infrastructure as a Service (IaaS)** offering.
 
-Containers are a virtualization environment. Much like running multiple virtual machines on a single physical host, you can run multiple containers on a single physical or virtual host. Unlike virtual machines, you don't manage the operating system for a container. Each virtual machine runs its own operating system that you can connect to and manage. Containers are lightweight and designed to be created, scaled out, and stopped dynamically. You can create and deploy virtual machines as application demand increases, but containers are a lighter-weight, more agile method. Containers help you respond to changes on demand and restart quickly after a crash or hardware interruption. One of the most popular container engines is Docker, and Azure supports Docker.
+Like a physical server, a VM gives the customer control over the operating system and installed software.
 
-Azure Container Instances
+VMs are a good fit when you need:
 
-Azure Container Instances offer the fastest and simplest way to run a container in Azure, without managing any virtual machines or adopting extra services. Azure Container Instances are a platform as a service (PaaS) offering. You upload your containers and the service runs them for you.
+- Full control over the operating system
+- Custom software
+- Custom hosting configurations
+- Existing workloads that are difficult to redesign
 
-Azure Container Apps
+### Common VM use cases
 
-Azure Container Apps are similar in many ways to a container instance. They let you get up and running right away, they remove the container management overhead, and they're a PaaS offering. Container Apps also include built-in load balancing and scaling, so your design can adapt to changing demand.
+- **Testing and development** — quickly create and remove different operating system and application configurations.
+- **Cloud application hosting** — run applications in Azure and adjust capacity as demand changes.
+- **Datacenter extension** — extend an on-premises environment into Azure.
+- **Disaster recovery** — maintain recovery capacity in Azure.
+- **Lift-and-shift migration** — move existing server workloads with minimal redesign.
 
-Azure Kubernetes Service
+### VM resources and sizing
 
-Azure Kubernetes Service (AKS) is a container orchestration service. An orchestration service manages the lifecycle of containers. When you're deploying a fleet of containers, AKS can make fleet management simpler and more efficient.
+When creating a VM, important choices include:
 
-Use containers in your solutions
-Containers are often used to create solutions that use a microservice architecture. In this architecture, you break solutions into smaller, independent pieces. For example, you might split a website into a container hosting your front end, another hosting your back end, and a third for storage. This split lets you maintain, scale, or update each part of your app independently.
+- vCPU count
+- RAM
+- Storage and disk performance
+- Network throughput
+- VM size family
+- Premium SSD support
+- Hardware generation
 
-14 . Azure functions
-Azure Functions is an event-driven, serverless compute option that doesn’t require maintaining virtual machines or containers. If you build an app using VMs or containers, those resources have to be “running” in order for your app to function. With Azure Functions, an event wakes the function, alleviating the need to keep resources provisioned when there are no events.
+### Common VM families
 
-Benefits of Azure Functions
+| Family | Typical focus | Example use |
+|---|---|---|
+| B-series | Burstable / cost efficient | Development and test |
+| D-series | General purpose | Web and application servers |
+| E-series | Memory optimized | Databases and analytics |
+| F-series | Compute optimized | CPU-intensive workloads |
+| M-series | Large memory | Enterprise databases |
+| L-series | Storage optimized | High-throughput data workloads |
+| N-series | GPU enabled | AI, graphics, GPU workloads |
 
-Using Azure Functions is ideal when you're only concerned about the code running your service and not about the underlying platform or infrastructure. Functions are commonly used when you need to perform work in response to an event (often via a REST request), timer, or message from another Azure service, and when that work can be completed quickly, within seconds or less.
+---
 
-Functions scale automatically based on demand, so they may be a good choice when demand is variable.
+## 12. VM Scale Sets and Availability Sets
 
-Azure Functions runs your code when it's triggered and automatically deallocates resources when the function finishes.
+### Virtual Machine Scale Sets
 
-Functions can be either stateless or stateful. When they're stateless (the default), they behave as if they restart every time they respond to an event. When they're stateful (called Durable Functions), the runtime passes a context through the function to track prior activity.
+Virtual Machine Scale Sets allow groups of similar VMs to be created and managed together.
 
-Functions are a key component of serverless computing. They're also a general compute platform for running any type of code. If the needs of your app change, you can deploy the project in an environment that isn't serverless. This flexibility lets you manage scaling, run on virtual networks, and even completely isolate the functions.
+They can:
 
-15.AI, machine learning, and IoT/Edge services in Azure
+- Keep VM configuration consistent
+- Scale out or scale in
+- Respond to workload demand
+- Integrate with load balancing
 
-Azure AI services
+### Availability Sets
 
-Azure AI services provides prebuilt capabilities for common AI scenarios, such as language, speech, vision, and document processing. These services are useful when you want to add intelligent features through APIs instead of training your own model first.
+Availability sets improve resiliency for groups of VMs inside a region.
 
-Azure OpenAI Service is another AI option in Azure that supports generative AI scenarios, such as chat and content generation, with built-in security and governance controls.
+They organize VMs across:
 
-Agentic AI patterns
+- **Fault domains** — separate hardware, power, or network failure boundaries
+- **Update domains** — groups that can be rebooted together during planned maintenance
 
-Agentic applications combine an AI model with instructions, context, and tool use to complete multistep goals. In Azure, you usually build these patterns by combining Azure AI services and Azure OpenAI Service with your own application logic.
+---
 
-At a fundamentals level, treat agentic AI as an application pattern built from Azure AI capabilities, not as a separate compute service category.
+## 13. Azure Virtual Desktop
 
-Azure Machine Learning
+Azure Virtual Desktop is a desktop and application virtualization service hosted in Azure.
 
-Use Azure Machine Learning when you need to build, train, and manage custom machine learning models. This option is a better fit when your scenario requires model development, experimentation, and lifecycle management.
+It enables users to securely access Windows desktops and applications from different devices and locations.
 
-IoT and Edge services
+Typical scenarios include:
 
-Azure IoT services help you connect, monitor, and manage devices.
+- Remote workers
+- Contractors
+- Shared or standardized desktop environments
+- Centrally managed application access
 
-Azure IoT Hub enables secure, bi-directional communication between cloud services and IoT devices.
-Azure IoT Central provides a simplified software as a service (SaaS) IoT platform for solution builders.
-Azure IoT Edge extends cloud capabilities to edge devices so some workloads can run closer to where data is generated.
+---
 
-Use Azure AI services when you need prebuilt AI features exposed through APIs.
-Use Azure Machine Learning when you need custom model development and management.
-Use Azure IoT services when your solution centers on connected devices and telemetry.
+## 14. Azure Containers
 
-16.application hosting options
+Containers package applications in a lightweight and portable way.
 
-VMs
-Containers
-Azure App Service
+Unlike virtual machines, containers do not require a full guest operating system for each application instance.
 
-App Service lets you build and host web apps, background jobs, mobile back-ends, and RESTful APIs in the programming language of your choice without managing infrastructure. It offers automatic scaling and high availability. App Service supports Windows and Linux and supports automated deployments from GitHub, Azure DevOps, or any Git repo for continuous deployment.
+This makes containers:
 
-Web apps
-API apps
-WebJobs
-Mobile apps
+- Lightweight
+- Fast to start
+- Easy to scale
+- Well suited for microservices
+
+### Azure Container Instances
+
+Azure Container Instances provides a simple way to run containers without managing virtual machines.
+
+It is useful when you want to run a container quickly without operating a full orchestration platform.
+
+### Azure Container Apps
+
+Azure Container Apps provides a managed environment for containerized applications with features such as:
+
+- Built-in scaling
+- Load balancing
+- Reduced infrastructure-management overhead
+
+### Azure Kubernetes Service
+
+Azure Kubernetes Service (AKS) is a managed Kubernetes service used to orchestrate containerized workloads.
+
+It helps manage:
+
+- Container deployment
+- Scaling
+- Availability
+- Lifecycle
+- Large groups of containers
+
+### Containers and microservices
+
+Containers are commonly used in microservice architectures where an application is divided into smaller independent components.
+
+For example:
+
+```text
+Frontend container
+        ↓
+Backend/API container
+        ↓
+Data service
+```
+
+Each component can then be deployed, scaled, and updated independently.
+
+---
+
+## 15. Azure Functions
+
+Azure Functions is an **event-driven serverless compute** service.
+
+Instead of keeping a VM or container running continuously, a function can execute when triggered by an event.
+
+Common triggers can include:
+
+- HTTP or REST requests
+- Timers
+- Messages
+- Events from other Azure services
+
+Benefits include:
+
+- No VM management
+- Automatic scaling
+- Good fit for event-driven workloads
+- Resources can be allocated only when code needs to run
+
+Functions are stateless by default, while **Durable Functions** can maintain workflow state across multiple operations.
+
+---
+
+## 16. AI, Machine Learning, IoT, and Edge Services
+
+### Azure AI services
+
+Azure AI services provide prebuilt capabilities for scenarios such as:
+
+- Language
+- Speech
+- Vision
+- Document processing
+
+These services can be consumed through APIs without building a machine-learning model from scratch.
+
+### Azure OpenAI Service
+
+Azure OpenAI Service supports generative AI use cases such as:
+
+- Chat
+- Content generation
+- AI-assisted applications
+
+### Azure Machine Learning
+
+Azure Machine Learning is designed for building, training, deploying, and managing custom machine-learning models.
+
+### IoT and Edge
+
+Azure IoT services help connect, monitor, and manage devices.
+
+Examples include:
+
+- **Azure IoT Hub** — secure bidirectional communication between devices and cloud services.
+- **Azure IoT Central** — a managed SaaS platform for building IoT solutions.
+- **Azure IoT Edge** — extends cloud workloads closer to devices and where data is generated.
+
+---
+
+## 17. Application Hosting Options
+
+Azure provides several application-hosting approaches.
+
+### Virtual Machines
+
+Choose VMs when you need:
+
+- Full OS control
+- Custom software
+- Custom infrastructure
+- Lift-and-shift workloads
+
+### Containers
+
+Choose containers when you need:
+
+- Lightweight packaging
+- Portability
+- Fast deployment
+- Microservices
+- Independent scaling
+
+### Azure App Service
+
+Azure App Service is a managed application-hosting platform.
+
+It can host:
+
+- Web applications
+- REST APIs
+- Background jobs
+- Mobile backends
+
+It supports Windows and Linux and can integrate with source-control systems for automated deployment.
+
+---
 
 # Key Takeaways
 
-From this module, my main takeaways are:
+From the architecture and compute modules, my main takeaways are:
 
 1. Azure's physical infrastructure is organized into datacenters, regions, and availability zones.
 2. Availability zones provide physical separation inside a region and can improve resiliency when workloads are designed to use them.
@@ -355,21 +463,29 @@ From this module, my main takeaways are:
 4. Azure resources are organized inside resource groups.
 5. Subscriptions provide billing and access-control boundaries.
 6. Management groups provide a governance layer above subscriptions.
-7. The Azure hierarchy helps organize resources and apply management policies consistently.
+7. Virtual machines provide the most control but require the customer to manage more of the operating environment.
+8. Containers are lighter than VMs and are useful for portable, scalable workloads.
+9. AKS provides orchestration for larger containerized environments.
+10. Azure Functions is useful for event-driven serverless workloads.
+11. Azure App Service provides managed application hosting without requiring direct infrastructure management.
+12. Choosing the right compute service depends on how much control, management responsibility, scalability, and portability the workload requires.
 
 ---
 
 # Learning Evidence
 
-Completed Microsoft Learn module:
+Completed Microsoft Learn modules:
 
 - ✅ **Describe the core architectural components of Azure**
+- ✅ **Describe Azure compute services**
 
-Achievement:  
+Core architecture achievement:  
 https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/VSRTPTQM?sharingId=E81E8C29E6F06D32
 
 ---
 
 ## Next Step
 
-Continue the **Azure Architecture & Services** learning path and document the next completed module before moving deeper into hands-on Azure infrastructure labs.
+Continue with **Describe Azure networking services**.
+
+This is a high-priority module for my target path in **Cloud Infrastructure, Network Engineering, and NetDevOps**, and it will lead directly into the first hands-on Azure networking labs.
