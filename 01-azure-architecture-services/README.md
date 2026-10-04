@@ -534,6 +534,24 @@ Another high-availability option is to configure a VPN gateway as a secure failo
 Zone-redundant gateways
 
 In regions that support availability zones, VPN gateways and ExpressRoute gateways can be deployed in a zone-redundant configuration. This configuration brings resiliency, scalability, and higher availability to virtual network gateways. Deploying gateways in Azure availability zones physically and logically separates gateways within a region while protecting your on-premises network connectivity to Azure from zone-level failures. These gateways require different gateway stock keeping units (SKUs) and use Standard public IP addresses instead of Basic public IP addresses.
+
+Azure ExpressRoute lets you extend your on-premises networks into the Microsoft cloud over a private connection, with the help of a connectivity provider. This connection is called an ExpressRoute Circuit. With ExpressRoute, you can establish connections to Microsoft cloud services,
+ExpressRoute lets you connect offices, datacenters, or other facilities to the Microsoft cloud. Each location would have its own ExpressRoute circuit.
+
+Connectivity can be from an any-to-any (IP VPN) network, a point-to-point Ethernet network, or a virtual cross-connection through a connectivity provider at a colocation facility. ExpressRoute connections don't go over the public internet. Because they bypass the public internet, ExpressRoute connections offer more reliability, faster speeds, consistent latencies, and higher security than typical internet connections.
+
+Global connectivity
+
+You can enable ExpressRoute Global Reach to exchange data across your on-premises sites by connecting your ExpressRoute circuits. For example, suppose you have an office in Asia and a datacenter in Europe, both with ExpressRoute circuits connecting them to the Microsoft network. You can use ExpressRoute Global Reach to connect those two facilities, allowing them to communicate without transferring data over the public internet.
+
+At a high level, choose ExpressRoute when:
+
+You need private, consistent connectivity between on-premises networks and Azure.
+Your team has strict compliance or data-transfer requirements.
+You need predictable latency and high-throughput network performance.
+You want to avoid sending critical traffic over the public internet.
+
+
 ---
 
 # Key Takeaways
@@ -553,6 +571,22 @@ From the architecture and compute modules, my main takeaways are:
 11. Azure App Service provides managed application hosting without requiring direct infrastructure management.
 12. Choosing the right compute service depends on how much control, management responsibility, scalability, and portability the workload requires.
 
+##20.Azure DNS
+
+Azure DNS is a hosting service for DNS domains that provides name resolution by using Microsoft Azure infrastructure. By hosting your domains in Azure, you can manage your DNS records using the same credentials, APIs, tools, and billing as your other Azure services.
+
+Benefits of Azure DNS
+Azure DNS uses the scope and scale of Microsoft Azure to provide numerous benefits, including:
+
+Reliability and performance
+Security
+Ease of use
+Customizable virtual networks
+Alias records
+
+Alias records
+
+Azure DNS also supports alias record sets. You can use an alias record set to refer to an Azure resource, such as an Azure public IP address, an Azure Traffic Manager profile, or an Azure Content Delivery Network (CDN) endpoint. If the IP address of the underlying resource changes, the alias record set seamlessly updates itself during DNS resolution. The alias record set points to the service instance, and the service instance is associated with an IP address.
 ---
 
 # Learning Evidence
