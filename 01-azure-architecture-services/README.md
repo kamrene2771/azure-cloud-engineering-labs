@@ -268,7 +268,7 @@ At a fundamentals level, Azure Virtual Desktop is a managed option for remote de
 When to use Azure Virtual Desktop
 Use Azure Virtual Desktop when a team needs centralized desktop and app access across distributed users, contractors, or hybrid workers. For example, a support team can use standardized cloud-hosted desktops so each shift has the same tools, access policies, and security controls.
 
-14.Azure containers
+13.Azure containers
 
 Containers are a virtualization environment. Much like running multiple virtual machines on a single physical host, you can run multiple containers on a single physical or virtual host. Unlike virtual machines, you don't manage the operating system for a container. Each virtual machine runs its own operating system that you can connect to and manage. Containers are lightweight and designed to be created, scaled out, and stopped dynamically. You can create and deploy virtual machines as application demand increases, but containers are a lighter-weight, more agile method. Containers help you respond to changes on demand and restart quickly after a crash or hardware interruption. One of the most popular container engines is Docker, and Azure supports Docker.
 
@@ -287,7 +287,7 @@ Azure Kubernetes Service (AKS) is a container orchestration service. An orchestr
 Use containers in your solutions
 Containers are often used to create solutions that use a microservice architecture. In this architecture, you break solutions into smaller, independent pieces. For example, you might split a website into a container hosting your front end, another hosting your back end, and a third for storage. This split lets you maintain, scale, or update each part of your app independently.
 
-15 . Azure functions
+14 . Azure functions
 Azure Functions is an event-driven, serverless compute option that doesn’t require maintaining virtual machines or containers. If you build an app using VMs or containers, those resources have to be “running” in order for your app to function. With Azure Functions, an event wakes the function, alleviating the need to keep resources provisioned when there are no events.
 
 Benefits of Azure Functions
@@ -301,6 +301,50 @@ Azure Functions runs your code when it's triggered and automatically deallocates
 Functions can be either stateless or stateful. When they're stateless (the default), they behave as if they restart every time they respond to an event. When they're stateful (called Durable Functions), the runtime passes a context through the function to track prior activity.
 
 Functions are a key component of serverless computing. They're also a general compute platform for running any type of code. If the needs of your app change, you can deploy the project in an environment that isn't serverless. This flexibility lets you manage scaling, run on virtual networks, and even completely isolate the functions.
+
+15.AI, machine learning, and IoT/Edge services in Azure
+
+Azure AI services
+
+Azure AI services provides prebuilt capabilities for common AI scenarios, such as language, speech, vision, and document processing. These services are useful when you want to add intelligent features through APIs instead of training your own model first.
+
+Azure OpenAI Service is another AI option in Azure that supports generative AI scenarios, such as chat and content generation, with built-in security and governance controls.
+
+Agentic AI patterns
+
+Agentic applications combine an AI model with instructions, context, and tool use to complete multistep goals. In Azure, you usually build these patterns by combining Azure AI services and Azure OpenAI Service with your own application logic.
+
+At a fundamentals level, treat agentic AI as an application pattern built from Azure AI capabilities, not as a separate compute service category.
+
+Azure Machine Learning
+
+Use Azure Machine Learning when you need to build, train, and manage custom machine learning models. This option is a better fit when your scenario requires model development, experimentation, and lifecycle management.
+
+IoT and Edge services
+
+Azure IoT services help you connect, monitor, and manage devices.
+
+Azure IoT Hub enables secure, bi-directional communication between cloud services and IoT devices.
+Azure IoT Central provides a simplified software as a service (SaaS) IoT platform for solution builders.
+Azure IoT Edge extends cloud capabilities to edge devices so some workloads can run closer to where data is generated.
+
+Use Azure AI services when you need prebuilt AI features exposed through APIs.
+Use Azure Machine Learning when you need custom model development and management.
+Use Azure IoT services when your solution centers on connected devices and telemetry.
+
+16.application hosting options
+
+VMs
+Containers
+Azure App Service
+
+App Service lets you build and host web apps, background jobs, mobile back-ends, and RESTful APIs in the programming language of your choice without managing infrastructure. It offers automatic scaling and high availability. App Service supports Windows and Linux and supports automated deployments from GitHub, Azure DevOps, or any Git repo for continuous deployment.
+
+Web apps
+API apps
+WebJobs
+Mobile apps
+
 # Key Takeaways
 
 From this module, my main takeaways are:
