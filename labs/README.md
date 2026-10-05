@@ -1,26 +1,30 @@
 # Hands-on Azure Labs
 
-> Status: ⬜ **Planned**
+> Status: 🔄 **In progress**
 
-This directory will contain practical Azure infrastructure labs.
+This directory contains practical Azure infrastructure labs focused on building, validating, breaking, troubleshooting, and documenting cloud environments.
 
-Each meaningful lab will have its own folder and documentation including:
+## Labs
+
+| Lab | Topic | Status |
+|---|---|---|
+| [01](./01-basic-azure-network/) | Basic Azure Network Security | 🔄 In progress |
+
+## Lab Standard
+
+Each meaningful lab should include:
 
 - Objective
 - Architecture
 - Services used
+- IP addressing
+- Security decisions
 - Configuration
 - Validation tests
-- Failure scenario
+- Intentional failure scenario
 - Troubleshooting
 - Lessons learned
 - Cost and cleanup
+- Redacted evidence
 
-Planned early labs:
-
-1. Resource groups and cost controls
-2. Azure Virtual Network and subnets
-3. Network Security Groups
-4. Linux virtual machines
-5. VNet peering
-6. DNS and private connectivity
+The goal is not to collect portal screenshots. The goal is to demonstrate engineering decisions and prove that the environment was built and troubleshot.
