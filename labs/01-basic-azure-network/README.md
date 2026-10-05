@@ -128,6 +128,12 @@ At the baseline stage there were:
 
 This created a clean state before security controls were introduced.
 
+### Evidence — VNet and baseline subnets
+
+![Azure VNet overview](./screenshots/01-vnet-overview-redacted.png)
+
+![Baseline subnet configuration](./screenshots/02-subnets-baseline.png)
+
 ---
 
 # Phase 2 — Subnet-Level NSGs
@@ -161,6 +167,12 @@ A key lesson is that subnet segmentation by IP addressing does not automatically
 
 NSGs are stateful, so return traffic for an allowed connection does not require a mirrored allow rule.
 
+### Evidence — NSG association
+
+![Subnets associated with NSGs](./screenshots/03-subnets-with-nsgs.png)
+
+![Network security groups](./screenshots/04-nertwork-sec-groups.png)
+
 ---
 
 # Phase 3 — Secure Management VM
@@ -190,6 +202,12 @@ Action: Allow
 ```
 
 All other unsolicited inbound internet traffic continues to fall through to `DenyAllInBound`.
+
+### Evidence — Management VM and restricted SSH
+
+![Management VM overview](./screenshots/05-vm-mgmt-001.png)
+
+![Restricted SSH rule](./screenshots/06-nsg-restricted-ssh.png)
 
 ---
 
@@ -239,6 +257,10 @@ Observed on `vm-mgmt-001`:
 - Private IP: `10.10.10.4/24`
 - Default route through Azure virtual networking
 
+### Evidence — Management VM network validation
+
+![Management VM network validation](./screenshots/07-vm-mgmt-network-validation.png)
+
 ---
 
 # Phase 5 — Private Application VM
@@ -258,6 +280,10 @@ Configuration:
 This VM cannot be administered directly from the internet.
 
 The management VM acts as the jump host.
+
+### Evidence — Private application VM
+
+![Private application VM](./screenshots/08-vm-app-001.png)
 
 ---
 
@@ -308,6 +334,10 @@ The SSH connection information confirmed that the session reaching the applicati
 
 This proves the management path is using private Azure networking after the initial connection to the jump host.
 
+### Evidence — Private connectivity through ProxyJump
+
+![Application VM private network validation](./screenshots/09-vm-app-network-validation.png)
+
 ---
 
 # Phase 6 — Intentional NSG Failure
@@ -335,6 +365,12 @@ The SSH session no longer completed and had to be interrupted.
 
 This demonstrates that the failure was caused by network policy rather than SSH authentication.
 
+### Evidence — Intentional failure
+
+![NSG deny rule](./screenshots/10-nsg-app-deny-ssh.png)
+
+![SSH blocked by NSG](./screenshots/11-ssh-blocked-by-nsg.png)
+
 ---
 
 # Phase 7 — Restore Access with Least Privilege
@@ -353,6 +389,14 @@ This allows SSH only from the designated management VM while denying SSH from ot
 > **Final verification required:** the current portal screenshot still shows the priority-100 allow rule sourced from `10.10.10.0/24`. Before marking the lab complete, this rule must be changed to `10.10.10.4/32` and the final NSG state captured again.
 
 After the allow rule was introduced, SSH connectivity to `vm-app-001` was restored. The connection details confirmed the source was `10.10.10.4`.
+
+### Evidence — Access restored
+
+![Current controlled SSH policy](./screenshots/13-nsg-app-controlled-ssh.png)
+
+![SSH restored after allow rule](./screenshots/12-ssh-restored-after-allow-rule.png)
+
+> The NSG screenshot above is retained as evidence of the troubleshooting sequence. The priority-100 source still needs to be tightened from `10.10.10.0/24` to `10.10.10.4/32` before the least-privilege policy is considered final.
 
 ---
 
@@ -430,17 +474,19 @@ The following screenshots were captured during the lab and should be published o
 
 | Evidence | Purpose |
 |---|---|
+| `01-vnet-overview-redacted.png` | VNet overview |
+| `02-subnets-baseline.png` | Baseline subnet configuration |
 | `03-subnets-with-nsgs.png` | Two subnets with subnet-level NSGs |
-| `04-network-security-groups.png` | NSG resources |
+| `04-nertwork-sec-groups.png` | NSG resources |
 | `05-vm-mgmt-001.png` | Management VM configuration |
 | `06-nsg-restricted-ssh.png` | SSH restricted to my source IP |
 | `07-vm-mgmt-network-validation.png` | Management VM SSH and routes |
-| `08-vm-app-private-only.png` | App VM with no public IP |
+| `08-vm-app-001.png` | App VM with no public IP |
 | `09-vm-app-network-validation.png` | Private jump-host connectivity |
 | `10-nsg-app-deny-ssh.png` | Intentional deny rule |
 | `11-ssh-blocked-by-nsg.png` | Failed SSH test |
-| `12-nsg-app-controlled-ssh.png` | Controlled allow + deny policy |
-| `13-ssh-restored-after-allow-rule.png` | Connectivity restored |
+| `12-ssh-restored-after-allow-rule.png` | Connectivity restored |
+| `13-nsg-app-controlled-ssh.png` | Controlled allow + deny policy |
 
 Sensitive information to redact before publishing:
 
