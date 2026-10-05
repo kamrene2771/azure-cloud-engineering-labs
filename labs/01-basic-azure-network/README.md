@@ -1,6 +1,6 @@
 # Lab 01 — Basic Azure Network Security
 
-> Status: 🔄 **Technical work complete — cleanup pending**  
+> Status: ✅ **Completed**  
 > Region: **Belgium Central**
 
 This lab moves from Azure theory into hands-on cloud networking and security.
@@ -646,8 +646,11 @@ Completed technical work:
 - ✅ Effective-route troubleshooting
 - ✅ Routing recovery after UDR removal
 
-Remaining operational cleanup:
+Cleanup completed:
 
-- ⬜ Deallocate the VMs when testing is finished
-- ⬜ Delete the NAT Gateway and its public IP if the lab will not be reused
-- ⬜ Remove any other disposable billable resources
+- ✅ Lab VMs and compute resources removed
+- ✅ NAT Gateway and outbound public IP removed
+- ✅ Disposable networking resources cleaned up
+- ✅ No Lab 01 infrastructure intentionally left running
+
+The screenshots and documentation remain as the reproducible evidence for the completed lab.
