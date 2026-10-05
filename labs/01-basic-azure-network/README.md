@@ -1,6 +1,6 @@
 # Lab 01 — Basic Azure Network Security
 
-> Status: 🔄 **In progress**  
+> Status: 🔄 **Technical work complete — cleanup pending**  
 > Region: **Belgium Central**
 
 This lab moves from Azure theory into hands-on cloud networking and security.
@@ -386,17 +386,114 @@ The intended final policy is:
 
 This allows SSH only from the designated management VM while denying SSH from other hosts in the management subnet.
 
-> **Final verification required:** the current portal screenshot still shows the priority-100 allow rule sourced from `10.10.10.0/24`. Before marking the lab complete, this rule must be changed to `10.10.10.4/32` and the final NSG state captured again.
+The priority-100 rule was finally tightened to `10.10.10.4/32`, so only the designated management VM can initiate SSH to the application VM.
 
 After the allow rule was introduced, SSH connectivity to `vm-app-001` was restored. The connection details confirmed the source was `10.10.10.4`.
 
-### Evidence — Access restored
-
-![Current controlled SSH policy](./screenshots/13-nsg-app-controlled-ssh.png)
+### Evidence — Access restored and least privilege enforced
 
 ![SSH restored after allow rule](./screenshots/12-ssh-restored-after-allow-rule.png)
 
-> The NSG screenshot above is retained as evidence of the troubleshooting sequence. The priority-100 source still needs to be tightened from `10.10.10.0/24` to `10.10.10.4/32` before the least-privilege policy is considered final.
+![Intermediate controlled SSH policy](./screenshots/13-nsg-app-controlled-ssh.png)
+
+![Final least-privilege NSG policy](./screenshots/25-nsg-app-final-least-privilege.png)
+
+---
+
+# Phase 8 — Explicit Outbound Connectivity with NAT Gateway
+
+The private application VM initially had working DNS resolution and an active default route to the Internet, but outbound HTTPS connections timed out.
+
+Observed baseline:
+
+```text
+DNS resolution                       ✅
+0.0.0.0/0 -> Internet system route  ✅
+Outbound HTTPS                       ❌
+```
+
+This showed that routing existed, but the private VM did not yet have a usable explicit outbound SNAT path.
+
+### Evidence — Outbound failure and effective routes
+
+![Outbound failure before NAT](./screenshots/14-vm-app-outbound-failure.png)
+
+![Effective routes before NAT](./screenshots/15-vm-app-effective-routes.png)
+
+A NAT Gateway was then deployed and associated only with `snet-app`:
+
+```text
+nat-azlab-app
+└── snet-app 10.10.20.0/24
+    └── vm-app-001 10.10.20.4
+```
+
+The VM remained private-only with no public IP on its NIC.
+
+After the NAT Gateway was associated, HTTPS and package repository access worked:
+
+```bash
+curl -I https://learn.microsoft.com --max-time 8
+sudo apt update
+```
+
+The NAT public IP was also validated from the VM with:
+
+```bash
+curl https://api.ipify.org
+```
+
+The returned public address matched the public IP assigned to the NAT Gateway, proving outbound SNAT.
+
+### Evidence — NAT Gateway and SNAT validation
+
+![NAT Gateway associated with application subnet](./screenshots/16-nat-gateway-app-subnet.png)
+
+![Outbound restored through NAT Gateway](./screenshots/17-vm-app-outbound-restored.png)
+
+![VM outbound public IP validation](./screenshots/18-vm-app-nat-public-ip-validation.png)
+
+![NAT Gateway outbound public IP](./screenshots/19-nat-gateway-outbound-ip.png)
+
+---
+
+# Phase 9 — User Defined Route Failure and Recovery
+
+A route table named `rt-app` was associated with `snet-app`.
+
+To test route precedence, a temporary blackhole route was created:
+
+```text
+Name: block-internet
+Prefix: 0.0.0.0/0
+Next hop: None
+```
+
+This user-defined route overrode the default Internet path and intentionally dropped outbound traffic.
+
+### Evidence — UDR blackhole
+
+![Route table associated with application subnet](./screenshots/20-route-table-associated.png)
+
+![Blackhole route visible in effective routing](./screenshots/21-udr-blackhole-effective-route.png)
+
+![Outbound traffic blocked by UDR](./screenshots/22-udr-outbound-blocked.png)
+
+After deleting only the `block-internet` route, Azure returned to the default active route:
+
+```text
+0.0.0.0/0 -> Internet
+```
+
+The empty route table remained associated with the subnet but no longer overrode the Azure system route. Outbound HTTPS worked again through the NAT Gateway.
+
+### Evidence — Routing recovery
+
+![Effective routes restored](./screenshots/23-effective-routes-restored.png)
+
+![Outbound restored after UDR removal](./screenshots/24-outbound-restored-after-udr-removal.png)
+
+This experiment demonstrated that the route table itself was not the cause of the outage; the specific `0.0.0.0/0 -> None` UDR was.
 
 ---
 
@@ -466,6 +563,18 @@ A custom priority-200 deny overrides the default priority-65000 VNet allow.
 
 The application VM does not need a public IP. It can be reached through a controlled management path.
 
+## 6. A default Internet route does not guarantee usable outbound connectivity
+
+The application VM had an active `0.0.0.0/0 -> Internet` route and working DNS, but HTTPS still timed out until an explicit outbound NAT path was added.
+
+## 7. NAT Gateway provides outbound identity without making the VM public
+
+The VM remained private-only while outbound connections were translated through the NAT Gateway public IP.
+
+## 8. A UDR can intentionally override Azure system routing
+
+The temporary `0.0.0.0/0 -> None` route blackholed outbound traffic. Removing that route restored the Azure system route and NAT-based outbound connectivity.
+
 ---
 
 # Evidence Captured
@@ -486,7 +595,19 @@ The following screenshots were captured during the lab and should be published o
 | `10-nsg-app-deny-ssh.png` | Intentional deny rule |
 | `11-ssh-blocked-by-nsg.png` | Failed SSH test |
 | `12-ssh-restored-after-allow-rule.png` | Connectivity restored |
-| `13-nsg-app-controlled-ssh.png` | Controlled allow + deny policy |
+| `13-nsg-app-controlled-ssh.png` | Intermediate controlled allow + deny policy |
+| `14-vm-app-outbound-failure.png` | DNS works but outbound HTTPS fails |
+| `15-vm-app-effective-routes.png` | Default system routes before NAT |
+| `16-nat-gateway-app-subnet.png` | NAT Gateway associated with app subnet |
+| `17-vm-app-outbound-restored.png` | HTTPS and package access restored |
+| `18-vm-app-nat-public-ip-validation.png` | Public IP observed from private VM |
+| `19-nat-gateway-outbound-ip.png` | NAT Gateway outbound public IP |
+| `20-route-table-associated.png` | Route table associated with app subnet |
+| `21-udr-blackhole-effective-route.png` | Blackhole UDR in effective routing |
+| `22-udr-outbound-blocked.png` | Outbound traffic blocked by UDR |
+| `23-effective-routes-restored.png` | Default route restored after UDR removal |
+| `24-outbound-restored-after-udr-removal.png` | Outbound connectivity restored |
+| `25-nsg-app-final-least-privilege.png` | Final /32 SSH allow policy |
 
 Sensitive information to redact before publishing:
 
@@ -515,9 +636,18 @@ Completed:
 - ✅ Intentional NSG deny test
 - ✅ Troubleshooting and access restoration
 
-Remaining before marking complete:
+Completed technical work:
 
-- ⬜ Tighten priority-100 app SSH rule from `10.10.10.0/24` to `10.10.10.4/32`
-- ⬜ Capture final corrected NSG screenshot
-- ⬜ Deallocate VMs when not actively testing
-- ⬜ Continue with routing and controlled outbound connectivity
+- ✅ Final least-privilege SSH rule: `10.10.10.4/32`
+- ✅ Explicit outbound connectivity through NAT Gateway
+- ✅ NAT/SNAT public-IP validation
+- ✅ Route table association
+- ✅ Intentional UDR blackhole
+- ✅ Effective-route troubleshooting
+- ✅ Routing recovery after UDR removal
+
+Remaining operational cleanup:
+
+- ⬜ Deallocate the VMs when testing is finished
+- ⬜ Delete the NAT Gateway and its public IP if the lab will not be reused
+- ⬜ Remove any other disposable billable resources
