@@ -1,6 +1,6 @@
 # Hands-on Azure Labs
 
-> Status: 🔄 **In progress**
+> Status: ✅ **Lab 01 completed**
 
 This directory contains practical Azure infrastructure labs focused on building, validating, breaking, troubleshooting, and documenting cloud environments.
 
@@ -8,7 +8,7 @@ This directory contains practical Azure infrastructure labs focused on building,
 
 | Lab | Topic | Status |
 |---|---|---|
-| [01](./01-basic-azure-network/) | Basic Azure Network Security | 🔄 In progress |
+| [01](./01-basic-azure-network/) | Basic Azure Network Security | ✅ Completed |
 
 ## Lab Standard
 
