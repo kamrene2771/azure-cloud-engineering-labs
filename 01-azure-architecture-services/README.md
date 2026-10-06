@@ -694,6 +694,10 @@ Examples include:
 
 If the underlying resource changes, the alias can continue to resolve to the service without requiring the DNS record to be manually updated with a new IP address.
 
+## 25. Azure storage accounts
+
+A storage account provides a unique namespace for your Azure Storage data that's accessible from anywhere in the world over HTTP or HTTPS. Data in this account is secure, highly available, durable, and massively scalable.
+
 ---
 
 # Networking Key Takeaways
@@ -710,6 +714,15 @@ From the Azure networking module, my main takeaways are:
 8. ExpressRoute provides private connectivity that does not traverse the public internet.
 9. Zone-redundant gateways can improve resilience for hybrid connectivity.
 10. Azure DNS provides integrated DNS hosting and supports alias records for Azure resources.
+
+Storage account endpoints
+One of the benefits of using an Azure storage account is having a unique namespace in Azure for your data. Every storage account must have a unique account name within Azure. The combination of the account name and the Azure Storage service endpoint forms the endpoints for your storage account.
+
+When naming your storage account, keep these rules in mind:
+
+Storage account names must be between 3 and 24 characters in length and may contain numbers and lowercase letters only.
+Your storage account name must be unique within Azure. No two storage accounts can have the same name. This supports the ability to have a unique, accessible namespace in Azure.
+The following table shows the endpoint format for Azure Storage services.
 
 ---
 
