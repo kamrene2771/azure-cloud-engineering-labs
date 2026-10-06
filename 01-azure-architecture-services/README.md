@@ -698,6 +698,60 @@ If the underlying resource changes, the alias can continue to resolve to the ser
 
 A storage account provides a unique namespace for your Azure Storage data that's accessible from anywhere in the world over HTTP or HTTPS. Data in this account is secure, highly available, durable, and massively scalable.
 
+Storage account endpoints
+One of the benefits of using an Azure storage account is having a unique namespace in Azure for your data. Every storage account must have a unique account name within Azure. The combination of the account name and the Azure Storage service endpoint forms the endpoints for your storage account.
+
+When naming your storage account, keep these rules in mind:
+
+Storage account names must be between 3 and 24 characters in length and may contain numbers and lowercase letters only.
+Your storage account name must be unique within Azure. No two storage accounts can have the same name. This supports the ability to have a unique, accessible namespace in Azure.
+The following table shows the endpoint format for Azure Storage services.
+
+26.Azure storage redundancy
+
+Redundancy in the primary region
+Data in Azure Storage is always replicated three times in the primary region. Primary-region options are locally redundant storage (LRS) and zone-redundant storage (ZRS).
+
+Locally redundant storage
+Locally redundant storage (LRS) replicates your data three times within a single data center in the primary region. LRS provides at least 11 nines of durability (99.999999999%) of objects over a given year.
+
+Zone-redundant storage
+For Availability Zone-enabled Regions, zone-redundant storage (ZRS) replicates your Azure Storage data synchronously across three Azure availability zones in the primary region. ZRS offers durability for Azure Storage data objects of at least 12 nines (99.9999999999%) over a given year.
+
+Redundancy in a secondary region
+For higher durability, you can replicate data to a secondary region that is geographically distant from the primary region.
+
+When you create a storage account, you choose the primary region. Azure assigns the paired secondary region based on region pairs.
+
+Secondary-region options are geo-redundant storage (GRS) and geo-zone-redundant storage (GZRS). GRS uses LRS in both regions, while GZRS uses ZRS in the primary region and LRS in the secondary region.
+
+Because data is replicated to the secondary region asynchronously, a failure that affects the primary region may result in data loss if the primary region can't be recovered. The interval between the most recent writes to the primary region and the last write to the secondary region is known as the recovery point objective (RPO). The RPO indicates the point in time to which data can be recovered. Azure Storage typically has an RPO of less than 15 minutes, although there's currently no SLA on how long it takes to replicate data to the secondary region.
+
+Geo-redundant storage
+
+GRS copies data synchronously three times in the primary region (LRS), then asynchronously to the secondary region (also LRS). It provides at least 16 nines of durability over a year.
+
+Geo-zone-redundant storage
+
+GZRS combines zone-level resilience in the primary region with geo-replication to a secondary region. Data is copied across three availability zones in the primary region and replicated to the paired secondary region using LRS. Microsoft recommends GZRS for workloads that need maximum consistency, availability, and disaster recovery resilience.
+
+27.Azure storage services
+
+Azure Blobs: A massively scalable object store for text and binary data. Also includes support for big data analytics through Data Lake Storage Gen2.
+Azure Files: Managed file shares for cloud or on-premises deployments.
+Azure Queues: A messaging store for reliable messaging between application components.
+Azure Disks: Block-level storage volumes for Azure VMs.
+Azure Tables: NoSQL table option for structured, non-relational data.
+
+Data access patterns change over time, so Azure Blob storage offers access tiers that balance storage cost against retrieval speed. The available access tiers include:
+
+Hot access tier: Optimized for storing data that is accessed frequently (for example, images for your website).
+Cool access tier: Optimized for data that is infrequently accessed and stored for at least 30 days (for example, invoices for your customers).
+Cold access tier: Optimized for storing data that is infrequently accessed and stored for at least 90 days.
+Archive access tier: Appropriate for data that is rarely accessed and stored for at least 180 days, with flexible latency requirements (for example, long-term backups).
+
+
+
 ---
 
 # Networking Key Takeaways
@@ -714,15 +768,6 @@ From the Azure networking module, my main takeaways are:
 8. ExpressRoute provides private connectivity that does not traverse the public internet.
 9. Zone-redundant gateways can improve resilience for hybrid connectivity.
 10. Azure DNS provides integrated DNS hosting and supports alias records for Azure resources.
-
-Storage account endpoints
-One of the benefits of using an Azure storage account is having a unique namespace in Azure for your data. Every storage account must have a unique account name within Azure. The combination of the account name and the Azure Storage service endpoint forms the endpoints for your storage account.
-
-When naming your storage account, keep these rules in mind:
-
-Storage account names must be between 3 and 24 characters in length and may contain numbers and lowercase letters only.
-Your storage account name must be unique within Azure. No two storage accounts can have the same name. This supports the ability to have a unique, accessible namespace in Azure.
-The following table shows the endpoint format for Azure Storage services.
 
 ---
 
