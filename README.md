@@ -6,7 +6,7 @@ This repository documents my progression from Azure fundamentals to practical cl
 
 ## Current Focus
 
-**Hands-on Azure Networking — Lab 01 completed** ✅
+**Azure Architecture & Services — Storage + Lab 02 planning** 🔄
 
 ### Microsoft Learn Progress
 
@@ -21,6 +21,9 @@ This repository documents my progression from Azure fundamentals to practical cl
 
 - ✅ **Describe Azure networking services**  
   https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/H262SW48?sharingId=E81E8C29E6F06D32
+
+- ✅ **Describe Azure storage services**  
+  https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/9A5QGWHU?sharingId=E81E8C29E6F06D32
 
 ## Learning Roadmap
 

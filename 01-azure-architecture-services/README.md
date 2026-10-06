@@ -4,12 +4,20 @@
 > Microsoft Learn modules completed:
 > - ✅ **Describe the core architectural components of Azure**
 > - ✅ **Describe Azure compute services**
+> - ✅ **Describe Azure networking services**
+> - ✅ **Describe Azure storage services**
 
 Core architecture achievement:  
 https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/VSRTPTQM?sharingId=E81E8C29E6F06D32
 
 Compute services achievement:  
 https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/3ZG7A2ZH?sharingId=E81E8C29E6F06D32
+
+Networking services achievement:  
+https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/H262SW48?sharingId=E81E8C29E6F06D32
+
+Storage services achievement:  
+https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/9A5QGWHU?sharingId=E81E8C29E6F06D32
 
 This section documents my understanding of Azure architecture and core services as I progress through Microsoft Learn.
 
@@ -803,6 +811,7 @@ Completed Microsoft Learn modules:
 - ✅ **Describe the core architectural components of Azure**
 - ✅ **Describe Azure compute services**
 - ✅ **Describe Azure networking services**
+- ✅ **Describe Azure storage services**
 
 Core architecture achievement:  
 https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/VSRTPTQM?sharingId=E81E8C29E6F06D32
@@ -813,19 +822,23 @@ https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/3ZG7A
 Networking services achievement:  
 https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/H262SW48?sharingId=E81E8C29E6F06D32
 
+Storage services achievement:  
+https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/9A5QGWHU?sharingId=E81E8C29E6F06D32
+
 ---
 
 ## Next Step
 
-Start the first hands-on Azure networking lab.
+Build **Lab 02 — Secure Azure Storage Access**, keeping the lab aligned with cloud infrastructure and networking.
 
-The first practical lab will focus on:
+The practical focus will be:
 
-- Resource group
-- Virtual network
-- Subnets
-- Network Security Groups
-- Linux virtual machine
-- Connectivity validation
-- Intentional connectivity failure
-- Troubleshooting and documentation
+- Storage account and private blob container
+- Public network access controls
+- Storage firewall behavior
+- Private Endpoint
+- Private DNS
+- Name-resolution validation
+- Private connectivity testing
+- Intentional failure and troubleshooting
+- Cleanup and documentation
