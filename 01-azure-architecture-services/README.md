@@ -916,6 +916,15 @@ Device management — Supports device registration and management through tools 
 
 Microsoft Entra Domain Services
 Microsoft Entra Domain Services provides managed domain services — domain join, group policy, LDAP, and Kerberos/NTLM authentication — without requiring you to deploy or maintain domain controllers in the cloud.
+
+Is information synchronized?
+
+A managed domain is configured to perform a one-way synchronization from Microsoft Entra ID to Microsoft Entra Domain Services. You can create resources directly in the managed domain, but they aren't synchronized back to Microsoft Entra ID. In a hybrid environment with an on-premises AD DS environment, Microsoft Entra Connect synchronizes identity information with Microsoft Entra ID, which is then synchronized to the managed domain.
+
+29.Azure authentication methods
+
+Authentication establishes the identity of a person, service, or device by requiring credentials. In Azure, common methods include passwords, single sign-on (SSO), multifactor authentication (MFA), and passwordless sign-in. Modern approaches are designed to improve both security and user convenience.
+
 ---
 
 # Storage Key Takeaways
@@ -933,6 +942,8 @@ From the Azure storage module, my main takeaways are:
 9. Azure Migrate helps assess and move existing workloads to Azure.
 10. Azure Data Box is designed for moving very large datasets when network transfer is not practical.
 11. For my cloud infrastructure path, the most relevant storage topics are managed disks, redundancy, secure storage access, migration, and private connectivity.
+
+
 
 ---
 
