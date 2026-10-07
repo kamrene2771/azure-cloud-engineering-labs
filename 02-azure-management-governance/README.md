@@ -1,8 +1,8 @@
 # 02 — Azure Management & Governance
 
-> Status: ⬜ **Planned**
+> Status: 🔄 **In progress**
 
-This section will document Azure management, governance, monitoring, and cost-control concepts after the architecture and services phase is complete.
+This section documents the next phase of the Azure learning path: management, governance, monitoring, and cost-control concepts.
 
 Planned topics include:
 

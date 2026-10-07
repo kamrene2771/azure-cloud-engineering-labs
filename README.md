@@ -6,7 +6,7 @@ This repository documents my progression from Azure fundamentals to practical cl
 
 ## Current Focus
 
-**Azure Identity, Access & Security** 🔄
+**Azure Management & Governance** 🔄
 
 ### Microsoft Learn Progress
 
@@ -25,13 +25,16 @@ This repository documents my progression from Azure fundamentals to practical cl
 - ✅ **Describe Azure storage services**  
   https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/9A5QGWHU?sharingId=E81E8C29E6F06D32
 
+- ✅ **Describe Azure identity, access, and security**  
+  https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/8VC63KSW?sharingId=E81E8C29E6F06D32
+
 ## Learning Roadmap
 
 | Stage | Topic | Status |
 |---|---|---|
 | 00 | [Cloud Fundamentals](./00-cloud-fundamentals/) | ✅ Completed |
-| 01 | [Azure Architecture & Services](./01-azure-architecture-services/) | 🔄 In progress |
-| 02 | [Azure Management & Governance](./02-azure-management-governance/) | ⬜ Planned |
+| 01 | [Azure Architecture & Services](./01-azure-architecture-services/) | ✅ Completed |
+| 02 | [Azure Management & Governance](./02-azure-management-governance/) | 🔄 In progress |
 | 03 | [Hands-on Azure Labs](./labs/) | 🔄 In progress — Labs 01–02 completed |
 | 04 | [Terraform](./terraform/) | ⬜ Planned |
 | 05 | [Ansible](./ansible/) | ⬜ Planned |
