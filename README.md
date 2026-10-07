@@ -10,6 +10,9 @@ This repository documents my progression from Azure fundamentals to practical cl
 
 ### Microsoft Learn Progress
 
+- 🏆 **Introduction to Cloud Infrastructure: Describe Azure architecture and services — Trophy earned**  
+  https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/8VC63KSW?sharingId=E81E8C29E6F06D32
+
 - 🏆 **Introduction to Cloud Infrastructure: Describe cloud concepts**  
   https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/8VCAPLHW?sharingId=E81E8C29E6F06D32
 
@@ -24,9 +27,6 @@ This repository documents my progression from Azure fundamentals to practical cl
 
 - ✅ **Describe Azure storage services**  
   https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/9A5QGWHU?sharingId=E81E8C29E6F06D32
-
-- ✅ **Describe Azure identity, access, and security**  
-  https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/8VC63KSW?sharingId=E81E8C29E6F06D32
 
 ## Learning Roadmap
 
