@@ -902,6 +902,20 @@ Instead of transferring very large datasets entirely over a network connection, 
 
 This is useful when network transfer would be too slow or impractical.
 
+28.Azure directory services
+
+Microsoft Entra ID is Microsoft's cloud-based identity and access management service. It lets you sign in and access both Microsoft cloud applications and cloud applications that you develop.
+
+Authentication — Verifies identity before granting access. Includes self-service password reset, multifactor authentication, banned password lists, and smart lockout.
+
+Single sign-on (SSO) — Lets one identity access multiple applications. SSO benefits and behavior are covered in the authentication methods unit.
+
+Application management — Manages cloud and on-premises apps through features like Application Proxy, SaaS app integration, and the My Apps portal.
+
+Device management — Supports device registration and management through tools like Microsoft Intune. Enables device-based Conditional Access policies that restrict access to known devices.
+
+Microsoft Entra Domain Services
+Microsoft Entra Domain Services provides managed domain services — domain join, group policy, LDAP, and Kerberos/NTLM authentication — without requiring you to deploy or maintain domain controllers in the cloud.
 ---
 
 # Storage Key Takeaways
