@@ -1,13 +1,12 @@
 # 01 — Azure Architecture & Services
 
-> Status: 🔄 **In progress**  
-> Current topic: **Describe Azure identity, access, and security** 🔄  
->
+> Status: ✅ **Completed**  
 > Microsoft Learn modules completed:
 > - ✅ **Describe the core architectural components of Azure**
 > - ✅ **Describe Azure compute services**
 > - ✅ **Describe Azure networking services**
 > - ✅ **Describe Azure storage services**
+> - ✅ **Describe Azure identity, access, and security**
 
 Core architecture achievement:  
 https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/VSRTPTQM?sharingId=E81E8C29E6F06D32
@@ -20,6 +19,9 @@ https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/H262S
 
 Storage services achievement:  
 https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/9A5QGWHU?sharingId=E81E8C29E6F06D32
+
+Identity, access, and security achievement:  
+https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/8VC63KSW?sharingId=E81E8C29E6F06D32
 
 This section documents my understanding of Azure architecture and core services as I progress through Microsoft Learn.
 
@@ -1238,6 +1240,9 @@ https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/H262S
 Storage services achievement:  
 https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/9A5QGWHU?sharingId=E81E8C29E6F06D32
 
+Identity, access, and security achievement:  
+https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/8VC63KSW?sharingId=E81E8C29E6F06D32
+
 ---
 
 ## Practical Reinforcement
@@ -1256,6 +1261,6 @@ The lab connected storage theory to infrastructure engineering through:
 
 ## Next Step
 
-Continue **Describe Azure identity, access, and security** in Microsoft Learn.
+Continue with **Azure Management & Governance**.
 
-After the theory is complete, reinforce the identity and authorization concepts with a specialization-focused Azure lab rather than a generic portal exercise.
+The next theory phase will focus on cost management, governance, compliance, monitoring, and Azure management tools before choosing the next hands-on lab.
