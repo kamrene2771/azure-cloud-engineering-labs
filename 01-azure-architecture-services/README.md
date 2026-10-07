@@ -936,6 +936,33 @@ To sign in, the user receives a notification on their phone, matches a number di
 FIDO2 security keys
 FIDO2 is an open standard for passwordless authentication built on the web authentication (WebAuthn) specification. FIDO2 security keys are unphishable hardware devices — typically USB, but also available with Bluetooth or NFC — that handle authentication without a username or password.
 
+30.Azure external identities
+
+An external identity is a person, device, or service that exists outside your tenant. Microsoft Entra External ID includes the capabilities used to securely interact with users beyond your tenant boundary.
+
+Why external identities matter
+Organizations often need to collaborate with partners, suppliers, vendors, and contractors. External identities let those users access approved resources by using their existing credentials, while your team still enforces access policies.
+
+B2B collaboration - Collaborate with external users by letting them use their preferred identity to sign in to your Microsoft applications or other internal applications (SaaS apps, custom-developed apps, etc.). B2B collaboration users are represented in your directory, typically as guest users.
+B2B direct connect - Establish a mutual, two-way trust with another Microsoft Entra tenant for seamless collaboration. B2B direct connect currently supports Teams shared channels, enabling external users to access your resources from within their home instances of Teams. B2B direct connect users aren't represented in your directory, but they're visible from within the Teams shared channel and can be monitored in Teams admin center reports.
+Microsoft Entra External ID for customers (formerly Azure AD B2C) - Publish modern SaaS apps or custom-developed apps (excluding Microsoft apps) to consumers and customers, while using Entra External ID for identity and access management.
+
+With Microsoft Entra ID, you can enable collaboration across tenant boundaries by using B2B features. Guest users from other tenants can be invited by administrators or authorized users. This capability also applies to social identities such as Microsoft accounts.
+
+Conditional Access is a tool that Microsoft Entra ID uses to allow (or deny) access to resources based on identity signals. These signals include who the user is, where the user is, and what device the user is requesting access from.
+
+Conditional Access helps IT administrators:
+
+Empower users to be productive wherever and whenever.
+Protect critical assets.
+
+Conditional Access is useful when you need to:
+
+Require multifactor authentication (MFA) to access an application depending on the requester’s role, location, or network. For example, you could require MFA for administrators, or for people connecting from outside trusted network locations.
+Require access to services only through approved client applications. For example, you could limit which email applications are able to connect to your email service.
+Require users to access your application only from managed devices. A managed device is a device that meets your standards for security and compliance.
+Block access from untrusted sources, such as access from unknown or unexpected locations.
+
 ---
 
 # Storage Key Takeaways
