@@ -1,6 +1,8 @@
 # 01 — Azure Architecture & Services
 
 > Status: 🔄 **In progress**  
+> Current topic: **Describe Azure identity, access, and security** 🔄  
+>
 > Microsoft Learn modules completed:
 > - ✅ **Describe the core architectural components of Azure**
 > - ✅ **Describe Azure compute services**
@@ -902,99 +904,280 @@ Instead of transferring very large datasets entirely over a network connection, 
 
 This is useful when network transfer would be too slow or impractical.
 
-28.Azure directory services
+# Azure Identity, Access & Security
 
-Microsoft Entra ID is Microsoft's cloud-based identity and access management service. It lets you sign in and access both Microsoft cloud applications and cloud applications that you develop.
+## 30. Microsoft Entra ID and Directory Services
 
-Authentication — Verifies identity before granting access. Includes self-service password reset, multifactor authentication, banned password lists, and smart lockout.
+Microsoft Entra ID is Microsoft's cloud-based identity and access management service.
 
-Single sign-on (SSO) — Lets one identity access multiple applications. SSO benefits and behavior are covered in the authentication methods unit.
+It allows identities to sign in and access Microsoft cloud applications as well as cloud applications developed by an organization.
 
-Application management — Manages cloud and on-premises apps through features like Application Proxy, SaaS app integration, and the My Apps portal.
+### Core capabilities covered in the module
 
-Device management — Supports device registration and management through tools like Microsoft Intune. Enables device-based Conditional Access policies that restrict access to known devices.
+**Authentication**  
+Verifies the identity of a user, service, or device before access is granted.
 
+Capabilities mentioned in the module include:
+
+- Self-service password reset
+- Multifactor authentication
+- Banned password lists
+- Smart lockout
+
+**Single sign-on (SSO)**  
+Allows one identity to access multiple applications without repeatedly signing in.
+
+**Application management**  
+Supports management of cloud and on-premises applications through capabilities such as:
+
+- Application Proxy
+- SaaS application integration
+- My Apps portal
+
+**Device management**  
+Supports device registration and management through tools such as Microsoft Intune and can be used with device-based Conditional Access policies.
+
+### Microsoft Entra Domain Services
+
+Microsoft Entra Domain Services provides managed domain capabilities without requiring an organization to deploy or maintain domain controllers in Azure.
+
+Capabilities covered include:
+
+- Domain join
+- Group Policy
+- LDAP
+- Kerberos authentication
+- NTLM authentication
+
+### Synchronization model
+
+The module describes synchronization as:
+
+```text
+On-premises AD DS
+        |
+        | Microsoft Entra Connect
+        v
+Microsoft Entra ID
+        |
+        | one-way synchronization
+        v
 Microsoft Entra Domain Services
-Microsoft Entra Domain Services provides managed domain services — domain join, group policy, LDAP, and Kerberos/NTLM authentication — without requiring you to deploy or maintain domain controllers in the cloud.
+```
 
-Is information synchronized?
+Objects created directly in the managed domain are not synchronized back to Microsoft Entra ID.
 
-A managed domain is configured to perform a one-way synchronization from Microsoft Entra ID to Microsoft Entra Domain Services. You can create resources directly in the managed domain, but they aren't synchronized back to Microsoft Entra ID. In a hybrid environment with an on-premises AD DS environment, Microsoft Entra Connect synchronizes identity information with Microsoft Entra ID, which is then synchronized to the managed domain.
+---
 
-29.Azure authentication methods
+## 31. Azure Authentication Methods
 
-Authentication establishes the identity of a person, service, or device by requiring credentials. In Azure, common methods include passwords, single sign-on (SSO), multifactor authentication (MFA), and passwordless sign-in. Modern approaches are designed to improve both security and user convenience.
+Authentication establishes the identity of a person, service, or device.
 
-Windows Hello for Business
-Windows Hello for Business is ideal for information workers that have their own designated Windows PC. The biometric and PIN credentials are directly tied to the user's PC, which prevents access from anyone other than the owner. With public key infrastructure (PKI) integration and built-in support for single sign-on (SSO), Windows Hello for Business provides a convenient method for seamlessly accessing work resources on-premises and in the cloud.
+Methods covered in the module include:
 
-Microsoft Authenticator app
-The Microsoft Authenticator app can also serve as a passwordless credential, turning any iOS or Android phone into a strong sign-in factor.
+- Passwords
+- Single sign-on (SSO)
+- Multifactor authentication (MFA)
+- Passwordless authentication
 
-To sign in, the user receives a notification on their phone, matches a number displayed on screen, and confirms with a biometric signal (touch or face) or PIN. No password is needed.
+### Windows Hello for Business
 
-FIDO2 security keys
-FIDO2 is an open standard for passwordless authentication built on the web authentication (WebAuthn) specification. FIDO2 security keys are unphishable hardware devices — typically USB, but also available with Bluetooth or NFC — that handle authentication without a username or password.
+Windows Hello for Business is designed for users with their own Windows devices.
 
-30.Azure external identities
+Authentication credentials such as a biometric signal or PIN are tied to the user's device.
 
-An external identity is a person, device, or service that exists outside your tenant. Microsoft Entra External ID includes the capabilities used to securely interact with users beyond your tenant boundary.
+The module also highlights integration with:
 
-Why external identities matter
-Organizations often need to collaborate with partners, suppliers, vendors, and contractors. External identities let those users access approved resources by using their existing credentials, while your team still enforces access policies.
+- Public key infrastructure (PKI)
+- Single sign-on
 
-B2B collaboration - Collaborate with external users by letting them use their preferred identity to sign in to your Microsoft applications or other internal applications (SaaS apps, custom-developed apps, etc.). B2B collaboration users are represented in your directory, typically as guest users.
-B2B direct connect - Establish a mutual, two-way trust with another Microsoft Entra tenant for seamless collaboration. B2B direct connect currently supports Teams shared channels, enabling external users to access your resources from within their home instances of Teams. B2B direct connect users aren't represented in your directory, but they're visible from within the Teams shared channel and can be monitored in Teams admin center reports.
-Microsoft Entra External ID for customers (formerly Azure AD B2C) - Publish modern SaaS apps or custom-developed apps (excluding Microsoft apps) to consumers and customers, while using Entra External ID for identity and access management.
+### Microsoft Authenticator
 
-With Microsoft Entra ID, you can enable collaboration across tenant boundaries by using B2B features. Guest users from other tenants can be invited by administrators or authorized users. This capability also applies to social identities such as Microsoft accounts.
+Microsoft Authenticator can be used as a passwordless credential.
 
-31.Azure conditional access
+A sign-in can involve:
 
-Conditional Access is a tool that Microsoft Entra ID uses to allow (or deny) access to resources based on identity signals. These signals include who the user is, where the user is, and what device the user is requesting access from.
+1. Receiving a notification on the phone
+2. Matching a number displayed during sign-in
+3. Confirming with biometrics or a PIN
 
-Conditional Access helps IT administrators:
+No password is required for that authentication flow.
 
-Empower users to be productive wherever and whenever.
-Protect critical assets.
+### FIDO2 security keys
 
-Conditional Access is useful when you need to:
+FIDO2 is an open standard for passwordless authentication based on WebAuthn.
 
-Require multifactor authentication (MFA) to access an application depending on the requester’s role, location, or network. For example, you could require MFA for administrators, or for people connecting from outside trusted network locations.
-Require access to services only through approved client applications. For example, you could limit which email applications are able to connect to your email service.
-Require users to access your application only from managed devices. A managed device is a device that meets your standards for security and compliance.
-Block access from untrusted sources, such as access from unknown or unexpected locations.
+FIDO2 security keys are hardware authentication devices that can use interfaces such as:
 
-32.Azure role-based access control
+- USB
+- Bluetooth
+- NFC
 
-When you have multiple IT and engineering teams, how can you control what access they have to the resources in your cloud environment? The principle of least privilege says you should only grant access up to the level needed to complete a task. If you only need read access to a storage blob, then you should only be granted read access to that storage blob — not write access, and not access to other blobs. It's a good security practice to follow.
+The module describes them as resistant to phishing and able to authenticate without a traditional username/password flow.
 
-However, managing that level of permissions for an entire team would become tedious. Instead of defining the detailed access requirements for each individual, and then updating access requirements when new resources are created or new people join the team, Azure enables you to control access through Azure role-based access control (Azure RBAC).
+---
 
-Azure provides built-in roles that describe common access rules for cloud resources. You can also define your own roles. Each role has an associated set of access permissions that relate to that role. When you assign individuals or groups to one or more roles, they receive all the associated access permissions.
+## 32. Microsoft Entra External Identities
 
-So, if you hire a new engineer and add them to the Azure RBAC group for engineers, they automatically get the same access as the other engineers in the same Azure RBAC group. Similarly, if you add additional resources and point Azure RBAC at them, everyone in that Azure RBAC group will now have those permissions on the new resources as well as the existing resources.
+External identities allow an organization to work securely with identities outside its own tenant.
 
-How is Azure RBAC enforced?
-Azure RBAC is enforced on any action that's initiated against an Azure resource that passes through Azure Resource Manager. Resource Manager is a management service that provides a way to organize and secure your cloud resources.
+Typical examples include:
 
-You typically access Resource Manager from the Azure portal, Azure Cloud Shell, Azure PowerShell, and the Azure CLI. Azure RBAC doesn't enforce access permissions at the application or data level. Application security must be handled by your application.
+- Partners
+- Suppliers
+- Vendors
+- Contractors
+- Customers
 
-Azure RBAC uses an allow model. When you're assigned a role, Azure RBAC allows you to perform actions within the scope of that role. If one role assignment grants you read permissions to a resource group and a different role assignment grants you write permissions to the same resource group, you have both read and write permissions on that resource group.
+External users can use their existing identities while the organization continues to apply access policies.
 
-33.encryption and key management in Azure
+### B2B collaboration
 
-Encryption at rest and in transit
-In Azure, encryption is commonly discussed in two forms:
+External users can access approved applications using their preferred identity.
 
-Encryption at rest protects data when it is stored, such as in databases, disks, and storage accounts.
+These users are represented in the directory, typically as guest users.
+
+### B2B direct connect
+
+B2B direct connect establishes a mutual trust relationship between Microsoft Entra tenants.
+
+The module highlights Teams shared channels as a current use case.
+
+Unlike normal B2B guest collaboration, these users are not represented as guest objects in the local directory.
+
+### Microsoft Entra External ID for customers
+
+This capability supports identity and access management for consumers and customers who access SaaS or custom-developed applications.
+
+The module also notes that collaboration can include social identities such as Microsoft accounts.
+
+---
+
+## 33. Conditional Access
+
+Conditional Access allows or denies access based on identity-related signals.
+
+Signals covered in the module include:
+
+- Who the user is
+- Where the user is connecting from
+- Which device is being used
+
+Conditional Access can be used to:
+
+- Require MFA for selected users, roles, locations, or networks
+- Require approved client applications
+- Require managed devices
+- Block access from untrusted or unexpected locations
+
+A simple way to think about it is:
+
+```text
+Identity + context + device signals
+                |
+                v
+       Conditional Access
+                |
+        +-------+-------+
+        |               |
+      Allow           Block
+   (with controls)
+```
+
+---
+
+## 34. Azure Role-Based Access Control
+
+Azure RBAC is used to control what identities are allowed to do with Azure resources.
+
+The key principle covered in the module is **least privilege**:
+
+> Grant only the permissions required to complete the task.
+
+Azure provides:
+
+- Built-in roles
+- Custom roles
+- Role assignments to users or groups
+
+Using groups simplifies access management because a new team member can inherit the same permissions as other members of the group.
+
+### Role assignments and scope
+
+Permissions apply within the scope where the role is assigned.
+
+The module describes Azure RBAC as an **allow model**.
+
+If multiple role assignments grant different permissions at the same scope, the allowed permissions are combined.
+
+For example:
+
+```text
+Role assignment 1 → Read
+Role assignment 2 → Write
+
+Effective permissions → Read + Write
+```
+
+### Enforcement
+
+The module explains Azure RBAC in the context of actions that pass through Azure Resource Manager.
+
+These actions can be initiated through tools such as:
+
+- Azure portal
+- Azure Cloud Shell
+- Azure PowerShell
+- Azure CLI
+
+This reinforces the difference between controlling access to Azure resources and implementing authorization logic inside an application.
+
+---
+
+## 35. Encryption and Azure Key Vault
+
+### Encryption at rest
+
+Encryption at rest protects data while it is stored.
+
+Examples mentioned in the module include:
+
+- Databases
+- Disks
+- Storage accounts
+
+### Encryption in transit
+
 Encryption in transit protects data while it moves between services, applications, and users.
 
-Azure Key Vault is a service for securely storing and controlling access to:
+### Azure Key Vault
 
-Secrets (such as connection strings and passwords)
-Encryption keys
-Certificates
+Azure Key Vault provides secure storage and access control for sensitive items such as:
+
+- Secrets
+- Encryption keys
+- Certificates
+
+Examples of secrets include connection strings and passwords.
+
+---
+
+# Identity & Security Key Takeaways
+
+From the identity, access, and security theory added to this section, my main takeaways are:
+
+1. Microsoft Entra ID provides cloud identity and access management.
+2. Authentication verifies identity; access decisions determine what that identity is allowed to use.
+3. SSO reduces repeated sign-ins across applications.
+4. MFA and passwordless methods strengthen authentication beyond passwords alone.
+5. Microsoft Entra Domain Services provides managed traditional domain capabilities without self-managed domain controllers.
+6. External identities support controlled collaboration across tenant boundaries.
+7. Conditional Access uses identity, location, and device signals to make access decisions.
+8. Azure RBAC supports least-privilege permissions through roles and scopes.
+9. Group-based role assignment simplifies access management for teams.
+10. Encryption at rest and in transit protect data in different states.
+11. Azure Key Vault centralizes protection of secrets, keys, and certificates.
+
 ---
 
 # Storage Key Takeaways
@@ -1073,4 +1256,6 @@ The lab connected storage theory to infrastructure engineering through:
 
 ## Next Step
 
-Continue the **Azure Architecture & Services** Microsoft Learn path, then reinforce the next relevant topic with another specialization-focused lab.
+Continue **Describe Azure identity, access, and security** in Microsoft Learn.
+
+After the theory is complete, reinforce the identity and authorization concepts with a specialization-focused Azure lab rather than a generic portal exercise.

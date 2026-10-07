@@ -6,7 +6,7 @@ This repository documents my progression from Azure fundamentals to practical cl
 
 ## Current Focus
 
-**Lab 02 — Secure Azure Storage Access completed** ✅
+**Azure Identity, Access & Security** 🔄
 
 ### Microsoft Learn Progress
 
