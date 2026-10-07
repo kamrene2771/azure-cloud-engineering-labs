@@ -1,6 +1,9 @@
 # 01 — Azure Architecture & Services
 
 > Status: ✅ **Completed**  
+> 🏆 Learning path trophy: **Introduction to Cloud Infrastructure: Describe Azure architecture and services**  
+> https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/8VC63KSW?sharingId=E81E8C29E6F06D32
+>
 > Microsoft Learn modules completed:
 > - ✅ **Describe the core architectural components of Azure**
 > - ✅ **Describe Azure compute services**
@@ -19,9 +22,6 @@ https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/H262S
 
 Storage services achievement:  
 https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/9A5QGWHU?sharingId=E81E8C29E6F06D32
-
-Identity, access, and security achievement:  
-https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/8VC63KSW?sharingId=E81E8C29E6F06D32
 
 This section documents my understanding of Azure architecture and core services as I progress through Microsoft Learn.
 
@@ -1223,10 +1223,16 @@ From the Azure networking module, my main takeaways are:
 
 Completed Microsoft Learn modules:
 
+🏆 **Learning path trophy earned:**  
+**Introduction to Cloud Infrastructure: Describe Azure architecture and services**  
+https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/8VC63KSW?sharingId=E81E8C29E6F06D32
+
+
 - ✅ **Describe the core architectural components of Azure**
 - ✅ **Describe Azure compute services**
 - ✅ **Describe Azure networking services**
 - ✅ **Describe Azure storage services**
+- ✅ **Describe Azure identity, access, and security**
 
 Core architecture achievement:  
 https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/VSRTPTQM?sharingId=E81E8C29E6F06D32
