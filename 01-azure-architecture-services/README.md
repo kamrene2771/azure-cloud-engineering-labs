@@ -949,6 +949,8 @@ Microsoft Entra External ID for customers (formerly Azure AD B2C) - Publish mode
 
 With Microsoft Entra ID, you can enable collaboration across tenant boundaries by using B2B features. Guest users from other tenants can be invited by administrators or authorized users. This capability also applies to social identities such as Microsoft accounts.
 
+31.Azure conditional access
+
 Conditional Access is a tool that Microsoft Entra ID uses to allow (or deny) access to resources based on identity signals. These signals include who the user is, where the user is, and what device the user is requesting access from.
 
 Conditional Access helps IT administrators:
@@ -963,6 +965,36 @@ Require access to services only through approved client applications. For exampl
 Require users to access your application only from managed devices. A managed device is a device that meets your standards for security and compliance.
 Block access from untrusted sources, such as access from unknown or unexpected locations.
 
+32.Azure role-based access control
+
+When you have multiple IT and engineering teams, how can you control what access they have to the resources in your cloud environment? The principle of least privilege says you should only grant access up to the level needed to complete a task. If you only need read access to a storage blob, then you should only be granted read access to that storage blob — not write access, and not access to other blobs. It's a good security practice to follow.
+
+However, managing that level of permissions for an entire team would become tedious. Instead of defining the detailed access requirements for each individual, and then updating access requirements when new resources are created or new people join the team, Azure enables you to control access through Azure role-based access control (Azure RBAC).
+
+Azure provides built-in roles that describe common access rules for cloud resources. You can also define your own roles. Each role has an associated set of access permissions that relate to that role. When you assign individuals or groups to one or more roles, they receive all the associated access permissions.
+
+So, if you hire a new engineer and add them to the Azure RBAC group for engineers, they automatically get the same access as the other engineers in the same Azure RBAC group. Similarly, if you add additional resources and point Azure RBAC at them, everyone in that Azure RBAC group will now have those permissions on the new resources as well as the existing resources.
+
+How is Azure RBAC enforced?
+Azure RBAC is enforced on any action that's initiated against an Azure resource that passes through Azure Resource Manager. Resource Manager is a management service that provides a way to organize and secure your cloud resources.
+
+You typically access Resource Manager from the Azure portal, Azure Cloud Shell, Azure PowerShell, and the Azure CLI. Azure RBAC doesn't enforce access permissions at the application or data level. Application security must be handled by your application.
+
+Azure RBAC uses an allow model. When you're assigned a role, Azure RBAC allows you to perform actions within the scope of that role. If one role assignment grants you read permissions to a resource group and a different role assignment grants you write permissions to the same resource group, you have both read and write permissions on that resource group.
+
+33.encryption and key management in Azure
+
+Encryption at rest and in transit
+In Azure, encryption is commonly discussed in two forms:
+
+Encryption at rest protects data when it is stored, such as in databases, disks, and storage accounts.
+Encryption in transit protects data while it moves between services, applications, and users.
+
+Azure Key Vault is a service for securely storing and controlling access to:
+
+Secrets (such as connection strings and passwords)
+Encryption keys
+Certificates
 ---
 
 # Storage Key Takeaways
