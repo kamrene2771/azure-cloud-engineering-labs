@@ -1,11 +1,18 @@
 # Lab 02 — Secure Azure Storage Access
 
-> Status: 🟡 **Technical work complete — cleanup pending**  
+> Status: ✅ **Completed**  
 > Region: **Belgium Central**
 
 This lab focuses on securing Azure Blob Storage from a cloud infrastructure and networking perspective.
 
 The objective was to allow a Linux workload to access a private Blob container without exposing the storage account to the public network, using **Azure Private Endpoint, Private DNS, Managed Identity, and Azure RBAC**.
+
+---
+
+## Supporting Documentation
+
+- [Commands used in the lab](./commands.md)
+- [Troubleshooting notes](./troubleshooting.md)
 
 ---
 
@@ -483,11 +490,11 @@ Technical validation:
 - ✅ Root-cause isolation
 - ✅ DNS restoration and service recovery
 
-Remaining:
+Cleanup:
 
-- ⬜ Review/redact screenshots for public portfolio
-- ⬜ Delete/deallocate disposable Azure resources
-- ⬜ Confirm no Lab 02 billable resources remain active
+- ✅ Disposable Lab 02 Azure resources removed/deallocated
+- ✅ No Lab 02 billable infrastructure intentionally left running
+- ✅ Screenshots and documentation retained as the reproducible lab evidence
 
 ---
 

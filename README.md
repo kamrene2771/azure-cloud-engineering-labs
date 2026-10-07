@@ -6,7 +6,7 @@ This repository documents my progression from Azure fundamentals to practical cl
 
 ## Current Focus
 
-**Lab 02 — Secure Azure Storage Access** 🔄
+**Lab 02 — Secure Azure Storage Access completed** ✅
 
 ### Microsoft Learn Progress
 
@@ -32,7 +32,7 @@ This repository documents my progression from Azure fundamentals to practical cl
 | 00 | [Cloud Fundamentals](./00-cloud-fundamentals/) | ✅ Completed |
 | 01 | [Azure Architecture & Services](./01-azure-architecture-services/) | 🔄 In progress |
 | 02 | [Azure Management & Governance](./02-azure-management-governance/) | ⬜ Planned |
-| 03 | [Hands-on Azure Labs](./labs/) | 🔄 In progress — Lab 02 |
+| 03 | [Hands-on Azure Labs](./labs/) | 🔄 In progress — Labs 01–02 completed |
 | 04 | [Terraform](./terraform/) | ⬜ Planned |
 | 05 | [Ansible](./ansible/) | ⬜ Planned |
 | 06 | CI/CD & Automation | ⬜ Planned |
@@ -54,6 +54,9 @@ As the portfolio develops, it will include work with:
 
 - Microsoft Azure
 - Azure Virtual Networks
+- Azure Private Link / Private Endpoints
+- Azure Private DNS
+- Microsoft Entra managed identities & Azure RBAC
 - Linux
 - Python
 - Git & GitHub
