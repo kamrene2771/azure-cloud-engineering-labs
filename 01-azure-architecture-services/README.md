@@ -962,18 +962,20 @@ https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/9A5QG
 
 ---
 
+## Practical Reinforcement
+
+The storage module was reinforced with:
+
+**[Lab 02 — Secure Azure Storage Access](../labs/02-secure-azure-storage-access/)** ✅
+
+The lab connected storage theory to infrastructure engineering through:
+
+- Private Endpoint and Private DNS
+- Public network restriction
+- Managed Identity and Azure RBAC
+- Blob data-plane access
+- DNS failure isolation and recovery
+
 ## Next Step
 
-Build **Lab 02 — Secure Azure Storage Access**, keeping the lab aligned with cloud infrastructure and networking.
-
-The practical focus will be:
-
-- Storage account and private blob container
-- Public network access controls
-- Storage firewall behavior
-- Private Endpoint
-- Private DNS
-- Name-resolution validation
-- Private connectivity testing
-- Intentional failure and troubleshooting
-- Cleanup and documentation
+Continue the **Azure Architecture & Services** Microsoft Learn path, then reinforce the next relevant topic with another specialization-focused lab.
