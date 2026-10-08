@@ -35,7 +35,7 @@ This repository documents my progression from Azure fundamentals to practical cl
 | 00 | [Cloud Fundamentals](./00-cloud-fundamentals/) | ✅ Completed |
 | 01 | [Azure Architecture & Services](./01-azure-architecture-services/) | ✅ Completed |
 | 02 | [Azure Management & Governance](./02-azure-management-governance/) | 🔄 In progress |
-| 03 | [Hands-on Azure Labs](./labs/) | 🔄 In progress — Labs 01–03 completed |
+| 03 | [Hands-on Azure Labs](./labs/) | ✅ Completed — Labs 01–03 |
 | 04 | [Terraform](./terraform/) | ⬜ Planned |
 | 05 | [Ansible](./ansible/) | ⬜ Planned |
 | 06 | CI/CD & Automation | ⬜ Planned |
