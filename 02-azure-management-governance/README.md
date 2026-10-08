@@ -2,77 +2,332 @@
 
 > Status: 🔄 **In progress**
 
-This section documents the next phase of the Azure learning path: management, governance, monitoring, and cost-control concepts.
+This section documents my notes from the Azure **Management & Governance** learning path.
 
-Planned topics include:
+The goal is to understand how Azure resources are **costed, organized, controlled, monitored, and governed** before moving deeper into automation and Infrastructure as Code.
 
-- Cost management
-- Resource tagging
-- Azure Policy
-- Resource locks
-- Azure RBAC
-- Azure Monitor
-- Azure Advisor
-- Management tools
-- Infrastructure deployment approaches
+---
 
+## Current Progress
 
-1.factors that can affect costs
-Many factors affect how much you pay. Some of the factors that affect cost are:
+### Covered so far
 
-Resource type
-Consumption
-Maintenance
-Geography
-Subscription type
-Azure Marketplace
+- ✅ Factors that affect Azure cost
+- ✅ Azure Pricing Calculator
+- ✅ Microsoft Cost Management
+- ✅ Cost alerts and budgets
+- ✅ Resource tags
+- ✅ Cost optimization options
 
-the pricing calculator
-The pricing calculator is designed to give you an estimated cost for provisioning resources in Azure. You can get an estimate for individual resources, build out a solution, or use an example scenario to see an estimate of the Azure spend.
+### Still to cover
 
-If you're planning a new web application, you can model one App Service plan, a managed database, and required storage options in the pricing calculator. You can then compare monthly estimates across regions, service tiers, and redundancy options before deployment.
+- ⬜ Azure Policy
+- ⬜ Resource locks
+- ⬜ Azure RBAC in governance
+- ⬜ Azure Monitor
+- ⬜ Azure Advisor
+- ⬜ Management tools
+- ⬜ Infrastructure deployment approaches
 
-2.Microsoft Cost Management tool
+---
 
-What is Cost Management?
-Cost Management provides the ability to quickly check Azure resource costs, create alerts based on resource spend, and create budgets that can be used to automate management of resources.
+# 1 — Factors That Affect Azure Costs
 
-Cost alerts
-Cost alerts provide a single location to quickly check on all of the different alert types that may show up in the Cost Management service. The three types of alerts that may show up are:
+Azure cost is influenced by several factors.
 
-Budget alerts
-Credit alerts
-Department spending quota alerts.
-Budget alerts
-Budget alerts notify you when spending reaches or exceeds a threshold you define. You can create budgets in the Azure portal or through the Azure Consumption API.
+| Factor | Why it matters |
+|---|---|
+| **Resource type** | Different Azure services and SKUs have different pricing models. |
+| **Consumption** | The amount of compute, storage, bandwidth, or other resources consumed affects cost. |
+| **Maintenance** | Operational and lifecycle requirements can influence the total cost of a solution. |
+| **Geography** | Pricing can vary between Azure regions. |
+| **Subscription type** | Different subscription and purchasing models can affect pricing. |
+| **Azure Marketplace** | Third-party products may introduce additional charges. |
 
-In the Azure portal, budgets are defined by cost. If you use the Azure Consumption API, you can also define budgets by consumption usage. Budget alerts are generated automatically whenever the budget alert conditions are met. You can view all cost alerts in the Azure portal. Whenever an alert is generated, it appears in cost alerts, and an alert email is also sent to the people in the alert recipients list of the budget.
+The important idea is that Azure cost is not determined by a single value. Architecture, usage, region, and purchasing model all contribute to the final bill.
 
-For example, you might set an alert at 80% of a monthly dev/test budget so your team can investigate and right-size resources before costs exceed target.
+---
 
-3.the purpose of tags
+## Azure Pricing Calculator
 
-Resource management Tags enable you to locate and act on resources that are associated with specific workloads, environments, teams, and owners.
-Cost management and optimization Tags enable you to group resources so that you can report on costs, allocate internal cost centers, track budgets, and forecast estimated cost.
-Operations management Tags enable you to group resources according to how critical their availability is to your operations. This grouping helps you formulate service-level agreements (SLAs). An SLA is an uptime or performance guarantee between you and your users.
-Security Tags enable you to classify data by its security level, such as public or confidential.
-Governance and regulatory compliance Tags enable you to identify resources that align with governance or regulatory compliance requirements, such as ISO 27001. Tags can also be part of your standards enforcement efforts. For example, you might require that all resources be tagged with an owner or department name.
-Workload optimization and automation Tags can help you visualize all of the resources that participate in complex deployments. For example, you might tag a resource with its associated workload or application name and use software such as Azure DevOps to perform automated tasks on those resources.
+The **Azure Pricing Calculator** is used to estimate the expected cost of Azure resources before deployment.
 
-4.cost optimization options in Azure
+It can be used to:
 
+- Estimate the cost of an individual resource
+- Build an estimate for a complete solution
+- Compare service tiers
+- Compare regions
+- Compare redundancy and configuration options
+
+### Example
+
+```text
+App Service
+    +
+Managed Database
+    +
+Storage
+    =
+Estimated monthly Azure cost
+```
+
+The configuration can then be changed to compare regions, service tiers, and redundancy options before resources are deployed.
+
+### Key takeaway
+
+```text
+Pricing Calculator
+        ↓
+Estimate before deployment
+```
+
+It helps with **planning**. It does not replace monitoring the real cost of deployed resources.
+
+---
+
+# 2 — Microsoft Cost Management
+
+**Microsoft Cost Management** provides tools to understand and control Azure spending.
+
+It can be used to:
+
+- Review Azure resource costs
+- Track spending
+- Create budgets
+- Configure cost alerts
+- Identify when spending approaches predefined thresholds
+
+---
+
+## Cost Alerts
+
+Cost Management provides a centralized location for several types of cost alerts.
+
+The three alert types covered in the learning material are:
+
+- **Budget alerts**
+- **Credit alerts**
+- **Department spending quota alerts**
+
+---
+
+## Budget Alerts
+
+Budget alerts notify users when spending reaches or exceeds a configured threshold.
+
+Budgets can be created through:
+
+- Azure portal
+- Azure Consumption API
+
+In the Azure portal, budgets are based on **cost**.
+
+Through the Azure Consumption API, budgets can also be defined using **consumption usage**.
+
+When an alert condition is met:
+
+```text
+Configured budget threshold reached
+                ↓
+          Budget alert
+                ↓
+        Cost alert generated
+                ↓
+       Notification sent
+```
+
+### Example
+
+A development team could create an alert at:
+
+```text
+80% of monthly dev/test budget
+```
+
+This gives the team time to investigate resource usage and optimize spending before the budget target is exceeded.
+
+---
+
+# 3 — Resource Tags
+
+Tags are metadata attached to Azure resources.
+
+They help organize resources and provide additional context about how and why a resource is being used.
+
+A tag can represent information such as:
+
+```text
+Environment = Production
+Owner       = Network-Team
+Department  = IT
+Workload    = Web-App
+```
+
+---
+
+## Why Tags Matter
+
+| Use case | Purpose |
+|---|---|
+| **Resource management** | Locate and group resources by workload, environment, team, or owner. |
+| **Cost management and optimization** | Group resources for cost reporting, internal allocation, budgets, and forecasting. |
+| **Operations management** | Group resources according to operational importance and availability requirements. |
+| **Security** | Classify resources or data according to security level, such as public or confidential. |
+| **Governance and compliance** | Identify resources associated with governance or regulatory requirements. |
+| **Automation** | Identify groups of resources that automation tools can act on. |
+
+### Example
+
+A company could require resources to contain tags such as:
+
+```text
+Owner
+Department
+Environment
+Application
+```
+
+This creates a consistent way to identify who owns a resource, what it belongs to, and how its cost should be classified.
+
+### Key takeaway
+
+Tags do not change the technical behavior of the resource by themselves.
+
+Their value comes from making resources easier to:
+
+```text
+Find
+Organize
+Report
+Govern
+Automate
+```
+
+---
+
+# 4 — Azure Cost Optimization Options
+
+Azure provides different purchasing options depending on workload behavior.
+
+The three options covered so far are:
+
+- Reservations
+- Azure savings plan for compute
+- Spot pricing
+
+---
+
+## Reservations
+
+Reservations are designed for **stable and predictable workloads**.
+
+You commit to specific resource capacity for:
+
+```text
+1 year
+or
+3 years
+```
+
+Azure then applies discounted pricing to matching usage.
+
+### Best suited for
+
+Long-running workloads where the required resources are known and relatively stable.
+
+---
+
+## Azure Savings Plan for Compute
+
+Azure savings plan for compute is also based on a commitment.
+
+Instead of committing to a specific VM family or instance type, you commit to an **hourly spend amount** for:
+
+```text
+1 year
+or
+3 years
+```
+
+Savings are then applied to eligible compute usage.
+
+### Best suited for
+
+Workloads with relatively consistent compute spending where more flexibility is required across compute services.
+
+---
+
+## Spot Pricing
+
+Spot Virtual Machines use unused Azure capacity at a reduced price.
+
+The tradeoff is that Azure can reclaim the capacity when it is needed elsewhere.
+
+### Best suited for
+
+Workloads that are:
+
+- Interruptible
+- Fault tolerant
+- Able to restart or recover
+- Highly cost sensitive
+
+---
+
+## Quick Decision Guide
+
+| Workload | Better fit |
+|---|---|
+| Predictable, long-running, stable resource requirement | **Reservations** |
+| Predictable compute spend but more flexibility required | **Azure savings plan for compute** |
+| Interruptible workload where lowest price is the priority | **Spot pricing** |
+
+A simple mental model:
+
+```text
+Stable resource requirement
+        ↓
 Reservations
-Reservations are best for stable, predictable workloads. You commit to specific resource capacity for a one-year or three-year term, and Azure applies discounted pricing to matching usage.
 
-Azure savings plan for compute
-Azure savings plan for compute is another commitment-based option for compute services. Instead of committing to a specific VM family or instance type, you commit to an hourly spend amount for one or three years, and savings are applied to eligible compute usage.
+Stable compute spending + flexibility
+        ↓
+Savings Plan
 
-Spot pricing
-Spot Virtual Machines use unused Azure capacity at reduced prices. Spot is most appropriate for interruptible workloads because Azure can reclaim that capacity when needed.
+Interruptible workload
+        ↓
+Spot
+```
 
-Decision guide
-Use this quick decision pattern:
+---
 
-Choose Reservations for predictable, long-running workloads with stable resource needs.
-Choose Azure savings plan for compute when usage is steady but you need more flexibility across compute services.
-Choose Spot pricing for fault-tolerant or interruptible workloads where lowest cost is the top priority.
+# What I Should Be Able to Explain
+
+Before considering this part complete, I should be able to explain:
+
+- What factors influence Azure cost
+- What the Azure Pricing Calculator is used for
+- What Microsoft Cost Management provides
+- The purpose of budgets and cost alerts
+- Why organizations use tags
+- How tags support cost management, operations, security, governance, and automation
+- The difference between Reservations, Savings Plans, and Spot pricing
+- Which cost optimization option fits a given workload
+
+---
+
+# Next
+
+Continue the Management & Governance learning path with:
+
+```text
+Azure Policy
+Resource Locks
+RBAC
+Monitoring
+Advisor
+Management Tools
+Deployment Approaches
+```
+
+The objective is not only to memorize Azure services, but to understand how governance decisions affect real cloud infrastructure.
