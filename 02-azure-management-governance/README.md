@@ -455,6 +455,16 @@ Azure Status gives you a global picture of Azure health across all services and 
 Service Health focuses on the Azure services and regions you actually use. Because you're signed in, Service Health knows which services matter to you and shows outages, planned maintenance, and health advisories relevant to your environment. You can set up alerts so you're notified automatically.
 Resource Health zooms in on individual resources, such as a specific virtual machine. It tells you whether a resource is running normally or experiencing a problem, and whether the issue is on Azure's side or yours.
 
+15.Azure Monitor
+Azure Monitor is a platform for collecting, analyzing, and acting on data from your Azure resources and applications. It works with Azure, on-premises, and multicloud environments.
+
+Azure Log Analytics
+Log Analytics is the tool in the Azure portal where you write and run queries against the data Azure Monitor collects. You can do simple filtering, like finding all errors in the last hour, or run advanced analytics to visualize trends over time.
+
+Azure Monitor Alerts
+Alerts notify you when Azure Monitor detects that a condition you defined has been met. You create an alert rule that specifies the condition, and an action group that controls who gets notified and what happens next.
+
+
 ---
 
 # What I Should Be Able to Explain
