@@ -1,6 +1,6 @@
 # Hands-on Azure Labs
 
-> Status: ✅ **Labs 01–02 completed**
+> Status: 🔄 **Labs 01–02 completed • Lab 03 in progress**
 
 This directory contains practical Azure infrastructure labs focused on building, validating, breaking, troubleshooting, and documenting cloud environments.
 
@@ -10,6 +10,7 @@ This directory contains practical Azure infrastructure labs focused on building,
 |---|---|---|
 | [01](./01-basic-azure-network/) | Basic Azure Network Security | ✅ Completed |
 | [02](./02-secure-azure-storage-access/) | Secure Azure Storage Access | ✅ Completed |
+| [03](./03-azure-identity-rbac/) | Azure Identity & RBAC — Least Privilege Access | 🔄 In progress |
 
 ## Lab Standard
 
