@@ -1,6 +1,6 @@
 # Lab 03 — Azure Identity & RBAC: Least Privilege Access
 
-> Status: 🟡 **Technical validation complete — cleanup pending**  
+> Status: ✅ **Completed**  
 > Region: **Belgium Central**
 
 This lab demonstrates Azure identity and authorization using **user-assigned managed identities**, **Azure RBAC**, and **least-privilege access**.
@@ -487,11 +487,15 @@ Technical validation:
 - ✅ Control plane vs data plane demonstrated
 - ✅ Documentation and evidence organized
 
-Remaining:
+Cleanup:
 
-- ⬜ Review screenshots for public identifiers before external sharing
-- ⬜ Delete/deallocate disposable Lab 03 resources
-- ⬜ Confirm no Lab 03 billable resources remain active
+- ✅ Disposable Lab 03 Azure resources removed/deallocated
+- ✅ No Lab 03 billable infrastructure intentionally left running
+- ✅ Documentation and screenshots retained as lab evidence
+
+Portfolio hygiene:
+
+- Review screenshots for public identifiers before external sharing.
 
 ---
 
