@@ -10,6 +10,9 @@ This repository documents my progression from Azure fundamentals to practical cl
 
 ### Microsoft Learn Progress
 
+- 🏆 **Introduction to Cloud Infrastructure: Describe Azure management and governance — Trophy earned**  
+  https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/9A597CGU?sharingId=E81E8C29E6F06D32
+
 - 🏆 **Introduction to Cloud Infrastructure: Describe Azure management and governance — Trophy earned**
 
 - 🏆 **Introduction to Cloud Infrastructure: Describe Azure architecture and services — Trophy earned**  

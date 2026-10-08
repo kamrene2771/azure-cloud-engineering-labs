@@ -4,6 +4,9 @@
 
 This section documents my notes from the Azure **Management & Governance** learning path.
 
+🏆 **Learning path trophy: Introduction to Cloud Infrastructure: Describe Azure management and governance**  
+https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/9A597CGU?sharingId=E81E8C29E6F06D32
+
 The objective is to understand how Azure resources are **costed, organized, governed, deployed, monitored, and managed** before moving deeper into automation and Infrastructure as Code.
 
 ## Achievement
