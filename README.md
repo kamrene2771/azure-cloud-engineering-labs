@@ -6,9 +6,11 @@ This repository documents my progression from Azure fundamentals to practical cl
 
 ## Current Focus
 
-**Azure Management & Governance** 🔄
+**Terraform & Infrastructure as Code** 🔄
 
 ### Microsoft Learn Progress
+
+- 🏆 **Introduction to Cloud Infrastructure: Describe Azure management and governance — Trophy earned**
 
 - 🏆 **Introduction to Cloud Infrastructure: Describe Azure architecture and services — Trophy earned**  
   https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/8VC63KSW?sharingId=E81E8C29E6F06D32
@@ -34,9 +36,9 @@ This repository documents my progression from Azure fundamentals to practical cl
 |---|---|---|
 | 00 | [Cloud Fundamentals](./00-cloud-fundamentals/) | ✅ Completed |
 | 01 | [Azure Architecture & Services](./01-azure-architecture-services/) | ✅ Completed |
-| 02 | [Azure Management & Governance](./02-azure-management-governance/) | 🔄 In progress |
+| 02 | [Azure Management & Governance](./02-azure-management-governance/) | ✅ Completed |
 | 03 | [Hands-on Azure Labs](./labs/) | ✅ Completed — Labs 01–03 |
-| 04 | [Terraform](./terraform/) | ⬜ Planned |
+| 04 | [Terraform](./terraform/) | 🔄 Next focus |
 | 05 | [Ansible](./ansible/) | ⬜ Planned |
 | 06 | CI/CD & Automation | ⬜ Planned |
 | 07 | [Capstone Project](./capstone/) | ⬜ Planned |

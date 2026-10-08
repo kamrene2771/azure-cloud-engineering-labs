@@ -1,16 +1,21 @@
 # 02 — Azure Management & Governance
 
-> Status: 🔄 **In progress**
+> Status: ✅ **Completed**
 
 This section documents my notes from the Azure **Management & Governance** learning path.
 
 The objective is to understand how Azure resources are **costed, organized, governed, deployed, monitored, and managed** before moving deeper into automation and Infrastructure as Code.
 
+## Achievement
+
+🏆 **Microsoft Learn trophy earned:**  
+**Introduction to Cloud Infrastructure: Describe Azure management and governance**
+
 ---
 
 ## Current Progress
 
-### Covered so far
+### Completed topics
 
 - ✅ Factors that affect Azure cost
 - ✅ Azure Pricing Calculator
