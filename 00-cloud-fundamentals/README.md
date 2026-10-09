@@ -427,6 +427,11 @@ From this learning path, my main takeaways are:
 
 # Learning Evidence
 
+## Certification
+
+- ✅ **Microsoft Certified: Azure Fundamentals (AZ-900)** — Earned October 2026  
+  Microsoft Learn transcript: https://learn.microsoft.com/en-us/users/khalilamrene-2949/transcript/md40c1qx9wn9gg7?wt.mc_id=certnurture_eml14_email_wwl
+
 Microsoft Learn learning path completed:
 
 - ✅ **Describe cloud computing**
@@ -443,14 +448,12 @@ This repository will continue to document my Azure learning path through theory,
 
 ## Next Step
 
-Before moving to the next Azure learning path, I will validate my understanding through a short technical review covering:
+The Azure fundamentals checkpoint is now complete:
 
-- Shared responsibility
-- Cloud deployment models
-- Consumption-based pricing
-- CapEx vs OpEx
-- Scalability vs elasticity
-- High availability and reliability
-- IaaS vs PaaS vs SaaS
+- ✅ Cloud concepts learning path
+- ✅ Azure architecture and services learning path
+- ✅ Azure management and governance learning path
+- ✅ Hands-on Azure Labs 01–03
+- ✅ Microsoft Certified: Azure Fundamentals (AZ-900)
 
-After that checkpoint, the next phase will focus on **Azure architecture and services** and then hands-on infrastructure labs.
+The next phase is **Terraform and Infrastructure as Code**, using Azure resources I already understand and rebuilding them through repeatable code.

@@ -8,12 +8,15 @@ This repository documents my progression from Azure fundamentals to practical cl
 
 **Terraform & Infrastructure as Code** 🔄
 
+## Certification
+
+- ✅ **Microsoft Certified: Azure Fundamentals (AZ-900)** — Earned October 2026  
+  Microsoft Learn transcript: https://learn.microsoft.com/en-us/users/khalilamrene-2949/transcript/md40c1qx9wn9gg7?wt.mc_id=certnurture_eml14_email_wwl
+
 ### Microsoft Learn Progress
 
 - 🏆 **Introduction to Cloud Infrastructure: Describe Azure management and governance — Trophy earned**  
   https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/9A597CGU?sharingId=E81E8C29E6F06D32
-
-- 🏆 **Introduction to Cloud Infrastructure: Describe Azure management and governance — Trophy earned**
 
 - 🏆 **Introduction to Cloud Infrastructure: Describe Azure architecture and services — Trophy earned**  
   https://learn.microsoft.com/api/achievements/share/en-us/khalilamrene-2949/8VC63KSW?sharingId=E81E8C29E6F06D32
