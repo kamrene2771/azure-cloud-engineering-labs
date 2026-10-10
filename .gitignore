@@ -1,2 +1,19 @@
 .DS_Store
-**/variables.tf
+
+# Terraform working directory
+**/.terraform/**
+
+# Terraform state
+*.tfstate
+*.tfstate.*
+
+# Local variable values / credentials
+*.tfvars
+*.tfvars.json
+
+# Terraform plan files
+*.tfplan
+
+# Terraform crash logs
+crash.log
+crash.*.log
