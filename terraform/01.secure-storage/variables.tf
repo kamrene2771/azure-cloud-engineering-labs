@@ -19,6 +19,6 @@ variable "client_secret" {
 }
 
 variable "location" {
-  type        = string
-  default     = "belgiumcentral"
+  type    = string
+  default = "belgiumcentral"
 }
