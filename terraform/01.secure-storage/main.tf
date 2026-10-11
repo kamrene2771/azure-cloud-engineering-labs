@@ -28,7 +28,7 @@ resource "azurerm_subnet" "snet_storage" {
 }
 
 resource "azurerm_storage_account" "storage_acc" {
-  name                     = "storageaccountlab001"
+  name                     = "storageaccountlilahk"
   resource_group_name      = azurerm_resource_group.rg_lab_001.name
   location                 = var.location
   account_tier             = "Standard"
